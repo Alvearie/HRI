@@ -22,7 +22,7 @@ This repo uses Jekyll https://jekyllrb.com/docs/ with the Dinky theme. The defau
     * If you are successful with that, continue onto running the bundler in the next step
 
 * Run the bundler: `bundle install`
-* Make the template think it's running in github pages by setting the env var: `export PAGES_REPO_NWO=wffh-hri/docs`
+* Make the template think it's running in github pages by setting the env var: `export PAGES_REPO_NWO=alvearie/HRI`
 * Start up the Jekyll server: `bundle exec jekyll serve`
 * In your browser, go to `localhost:4000`
 
