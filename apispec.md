@@ -1,104 +1,120 @@
-# HRI API Specificaiton
-The HRI consists of two separate APIs: the Management API and Event Streams.
+# API specification
 
-- [Management API Specification](#management-api-specification)
-- [Data Specification](#data-specification)
+___
 
-## Management API Specification
-The Management API is defined using the OpenAPI 3.0 specification: [management.yml](https://github.com/Alvearie/hri-api-spec/tree/master/management-api/management.yml).
+**Note:** This service is currently in development phase and, as such, APIs are subject to change. Always refer to this documentation to get the latest information.
 
-You can open the file directly or use a program such as [Swagger UI](https://swagger.io/tools/swagger-ui/download/) to view it.
+___
 
-### Elastic Tenants
-HRI has been designed with a [multi-tenant cloud architecture](multitenancy.md). The API mainly contains methods for managing [Tenants](glossary.md#tenant) like creating, getting, and deleting. Each of these calls takes in the tenantId. The Id will be appended with the suffix `-batches` to create the index.
+The specification consists of two separate APIs: 
 
-A `Get` call without a tenantId will return a list of all tenants. The `Get` call, when given a tenantId, will return information on the elastic index of a specific tenant. 
-Below is a table of the fields returned by this call:
+- [Management API specification](#management-api-specification)
+- [Data specification](#data-specification)
 
-| Field | Description |
-|-------|-------------|
-|health         | health of the elastic cluster
-|status         | status of the index, can be open or closed 
-|index          | the name of the index, which will be the tenantId with `-batches` appended to it
-|uuid           | universally unique identifier 
-|pri            | number of primary shards
-|rep            | number of replicas
-|docs.count     | number of batches documents stored in the index
-|docs.deleted   | number of batches documents deleted from the index
-|store.size     | store size taken by primary and replica shards
-|pri.store.size | store size taken only by primary shards
+## Management API specification
 
+This API is defined using the OpenAPI 3.0 specification: [Specification management.yml on GitHub](https://github.com/Alvearie/hri-api-spec/tree/master/management-api/management.yml). To view it, you can either open the file directly or use a program such as [Swagger UI](https://swagger.io/tools/swagger-ui/download/). 
+
+### Elastic tenants
+
+Health Record Ingestion has been designed with a [multi-tenant cloud architecture](multitenancy.md). The API mainly contains methods for managing [tenants](glossary.md#tenant), for example, creating, getting, and deleting. Each of these calls takes in the tenantId. To create the index, the Id is appended with the suffix `-batches`.
+
+A `Get` call without a tenantId returns a list of all tenants. The `Get` call, when given a tenantId, returns information on the elastic index of a specific tenant. 
+
+**Table: Fields returned by the Get call**
+
+| Field          | Description                                                        |
+| -------------- | ------------------------------------------------------------------ |
+| health         | Health of the elastic cluster                                      |
+| status         | Status of the index, can be open or closed                         |
+| index          | The name of the index: the tenantId with `-batches` appended to it |
+| uuid           | Universally-unique identifier                                      |
+| pri            | Number of primary shards                                           |
+| rep            | Number of replicas                                                 |
+| docs.count     | Number of batches documents stored in the index                    |
+| docs.deleted   | Number of batches documents deleted from the index                 |
+| store.size     | Store size taken by primary and replica shards                     |
+| pri.store.size | Store size taken only by primary shards                            |
 
 ### Batches
-The API contains methods for managing [batches](glossary.md#batch) like creating, getting, and updating. Below is a table of the fields:
 
-| Field | Description |
-|-------|-------------|
-|id             | auto generated unique id 
-|name           | name of the batch, provided by the Data Integrator 
-|topic          | Event Streams (Kafka) topic that contains the data, provided by the Data Integrator
-|dataType       | the type of data, provided by the Data Integrator 
-|status         | status of the batch: [ started, completed, terminated ]
-|startDate      | the date and time the batch was started
-|endDate        | the date and time the batch was completed or terminated
-|recordCount    | the number of records in the batch, provided by the Data Integrator when completed
-|metadata       | custom json value, optional 
+The API contains methods for managing [batches](glossary.md#batch), for example, creating, getting, and updating. Only the `name`, `topic`, and `dataType` fields are required when creating a batch. All other fields are generated by the API.
 
-Only the `name`, `topic`, and `dataType` fields are required when creating a batch.
-  
-The `metadata` field is optional and allows the Data Integrator to include any additional information about the batch that Data Consumers might request. This information will be included in all notification messages.
- 
-The `recordCount` is provided by the Data Integrator when the batch is completed, and thus not always present.
+**Table: Fields for batches**
 
-All other fields are generated by the API.  
+| Field       | Description                                                                          |
+| ----------- | ------------------------------------------------------------------------------------ |
+| id          | Automatically generated unique ID                                                    |
+| name        | Name of the batch, provided by the Data Integrator                                   |
+| topic       | Event Streams (Kafka) topic that contains the data, provided by the Data Integrator  |
+| dataType    | The type of data, provided by the Data Integrator                                    |
+| status      | Status of the batch: [ started, completed, terminated ]                              |
+| startDate   | The date and time the batch was started                                              |
+| endDate     | The date and time the batch was completed or terminated                              |
+| recordCount | The number of records in the batch, provided by the Data Integrator when completed\* |
+| metadata    | Optional custom JSON value\*\*                                                       |
+
+\* The `recordCount` is provided by the Data Integrator when the batch is completed, and thus not always present.
+
+\*\* The `metadata` field is optional and allows the Data Integrator to include any additional information about the batch that Data Consumers might request. This information is included in all notification messages.
 
 ### Streams
-The API also contains methods for managing Event Streams topics like creating, getting, and deleting. Below is a table of the fields:
 
-| Field | Description |
-|-------|-------------|
-|id                  | stream id, consisting of a data integrator and optional qualifier, delimited by '.' 
-|numPartitions       | the number of partitions on the topic  
-|retentionMs         | length of time in milliseconds before log segments are automatically discarded from a partition
-|retentionBytes      | optional maximum size in bytes that a partition can grow before discarding log segments 
-|cleanupPolicy       | optional retention policy on old log segments
-|segmentMs           | optional time in milliseconds after which Kafka will force the log to roll even if the segment file isn't full
-|segmentBytes        | optional log segment file size in bytes 
-|segmentIndexBytes   | optional size in bytes of the index that maps offsets to file positions
+The API also contains methods for managing Event Streams topics, for example,  creating, getting, and deleting. When creating a stream, only the `numPartitions` and `retentionMs` fields are required. The rest of the topic configurations are optional. 
 
-Only the `numPartitions` and `retentionMs` fields are required when creating a stream. The rest of the topic configurations (`retentionBytes`, `cleanupPolicy`, `segmentMs`, `segmentBytes`, and `segmentIndexBytes`) are optional. Below is a table of the default values and acceptable ranges for these optional fields:
+**Table: Fields for streams**
 
-| Field | Default value | Acceptable values/ranges |
-|-------|-------------|----------------------------|
-|retentionBytes      | 1073741824   | [10485760..1073741824]
-|cleanupPolicy       | delete       | [ delete, compact ] 
-|segmentMs           | nil          | [300000..2592000000]
-|segmentBytes        | 536870912    | [10485760..536870912]
-|segmentIndexBytes   | nil          | [102400..104857600]
+| Field             | Description                                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------------------------- |
+| id                | Stream ID consisting of a Data Integrator and optional qualifier, delimited by a period (\.\)               |
+| numPartitions     | The number of partitions on the topic                                                                       |
+| retentionMs       | Length of time in milliseconds before log segments are automatically discarded from a partition             |
+| retentionBytes    | Optional maximum size in bytes that a partition can grow before discarding log segments                     |
+| cleanupPolicy     | Optional retention policy on old log segments                                                               |
+| segmentMs         | Optional time in milliseconds after which Kafka forces the log to roll, even if the segment file isn't full |
+| segmentBytes      | Optional log segment file size in bytes                                                                     |
+| segmentIndexBytes | Optional size in bytes of the index that maps offsets to file positions                                     |
 
-If the `cleanupPolicy` field is set to compact, it will disable deletion based on time, ignoring the value set for the field `retentionMs`.
+**Table: Default values and acceptable ranges for optional fields**
 
-Event Streams is an IBM Cloud managed version of Apache Kafka. It uses standard Kafka libraries to read and write data to topics. See the IBM [documentation](https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-kafka_using#kafka_api_client) for details on connection parameters. 
+| Field             | Default value | Acceptable values, ranges |
+| ----------------- | ------------- | ------------------------- |
+| retentionBytes    | 1073741824    | [10485760..1073741824]    |
+| cleanupPolicy     | delete        | [ delete, compact ]       |
+| segmentMs         | nil           | [300000..2592000000]      |
+| segmentBytes      | 536870912     | [10485760..536870912]     |
+| segmentIndexBytes | nil           | [102400..104857600]       |
 
-## Data Specification
+If the `cleanupPolicy` field is set to compact, it disables deletion based on time, and ignores the value set for the `retentionMs` field.
 
-### Health Input Data - FHIR Model
+Event Streams is an IBM&reg; Cloud-managed version of Apache Kafka. It uses standard Kafka libraries to read data from and write data to topics. For details on connection parameters, see the IBM documentation [Configuring your Kafka API client](https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-kafka_using#kafka_api_client).  
 
-HRI **does not** impose any requirements on the format of the content of the Health (data) records written to Kafka. Watson Health has selected FHIR as the preferred data model for all Health Data. [Data Integrators](glossary.md#data-integrator) and [Consumers](glossary.md#data-consumer) must work together to agree on the specifics of the input data such as format and frequency.
+## Data specification
 
-### HRI-Specific Requirements
-The HRI **does** have the following requirements and recommendations:
+### Health input data: FHIR model
 
-* Batch Id Header - every record **must** have a header entry with the [batch id](glossary.md#batch-id) that uses the key `batchId`. Data Integrators may include any additional header values, which will get passed downstream to consumers.
+Health Record Ingestion does **not** impose any requirements on the format of the content of the health (data) records written to Kafka. IBM Watson Health has selected Fast Healthcare Interoperability Resource (FHIR) as the preferred data model for all health data. [Data Integrators](glossary.md#data-integrator) and [Consumers](glossary.md#data-consumer) must work together to agree on the specifics of the input data, for example, the format and frequency.
 
-* Zstd Compression - use `zstd` compression when writing to Kafka by setting the [compression.type](https://kafka.apache.org/documentation/#compression.type) producer configuration. Event Streams throttles network usage and limits Kafka messages to 1 MB. Using compression will help prevent an Event Streams bottleneck.
+### Requirements specific to Health Record Ingestion
 
-* 1 MB Message Limit - Event Streams limits messages to 1 MB. Set the [message.max.bytes](https://kafka.apache.org/documentation/#message.max.bytes) producer configuration to `1000000` to prevent sending records over the limit. For records over 1 MB compressed, there are two strategies:
+Health Record Ingestion has the following requirements and recommendations:
 
-  1. External References - for records that have large binary attachments like images or pdfs, you may provide a reference to the large resource that is included in the message, rather than the (large) resource itself. For example, you could put a COS Object URL, or some other external data store URL, and key into the message.
-  
-  2. Splitting up Records - records can be split into smaller parts, sent through the HRI, and re-assembled by down stream consumers. 
+**Batch Id header**
 
-  
-### Notification Messages
-The notification messages are json-encoded batches. They match the schema returned by the Management API described above, which is also defined here: [batchNotification.json](https://github.com/Alvearie/hri-api-spec/tree/master/notifications/batchNotification.json).
+Every record **must** have a header entry with the [batch id](glossary.md#batch-id) that uses the key `batchId`. Data Integrators can include any additional header values, which will get passed downstream to consumers.
+
+**Zstd compression**
+
+Use `zstd` compression when writing to Kafka by setting the [compression.type](https://kafka.apache.org/documentation/#compression.type) producer configuration. Event Streams throttles network usage and limits Kafka messages to 1 MB. Using compression helps prevent an Event Streams bottleneck.
+
+**1 MB message limit**
+
+Event Streams limits messages to 1 MB. To prevent sending records over the limit, set the [message.max.bytes](https://kafka.apache.org/documentation/#message.max.bytes) producer configuration to `1000000`. For records greater than 1 MB compressed, there are two strategies:
+
+1. **External references:** For records that have large binary attachments, for example, images or PDF documents, you can provide a reference to the large resource that is included in the message, rather than the (large) resource itself. For example, you could put a Cloud Object Storage (COS) Object URL or another external data store URL, and key into the message.
+
+2. **Splitting up records:** You can split records into smaller parts, send them through Health Record Ingestion, and reassemble them using downstream consumers. 
+
+### Notification messages
+
+The notification messages are JSON-encoded batches. They match the schema returned by the Management API described above. For more information, see [batchNotification.json on GitHub](https://github.com/Alvearie/hri-api-spec/tree/master/notifications/batchNotification.json).

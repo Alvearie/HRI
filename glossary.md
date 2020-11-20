@@ -1,42 +1,67 @@
-# HRI Glossary of Terms
+# Glossary
 
-A listing of key terms and phrases to help one's understanding of the Health Record Ingestion service.
+Learn these key terms and better understand the Health Record Ingestion service.
 
-#### Batch: 
-  * A __Batch__ in an HRI context represents a **_collection of Health Data records that must be processed together_** in order for that dataset to be ingested correctly into an IBM Cloud instance. Only processing some of the data would result in a bad state for the data consumer. Likewise, if there is an error with processing part of the data, the entire **batch** may need to be rejected.
-  
-#### Batch ID: 
-  * A unique identifier in HRI, refering to one specific batch. 
+#### batch
 
-#### Data Consumer: 
-  * A "downstream" service, process, or application receiving and further processing the data passing through the HRI. One such example might be an HRI Pipeline Adapter (based on NiFi) that persists data to COS (Cloud Object Storage). 
+A collection of Health Data records that must be processed **together** for that dataset to be ingested correctly into an IBM&reg; Cloud instance. Processing partial data causes problems. Similarly, if a processing error occurs with part of the data, the entire batch might need to be rejected.
 
-#### Data Integrator: 
-  * An "upstream" service, process or application that "sends" data into the HRI for processing. 
-  
-#### ElasticSearch: 
-  * A [distributed, open-source document store](https://www.elastic.co/what-is/elasticsearch) used to store various types of data. HRI uses ElasticSearch as its primary data store for metadata about batches. 
-  
-#### Event Streams: 
-  * The IBM Cloud [Event Streams service](https://www.ibm.com/cloud/event-streams) is a "Managed" service instance of [Apache Kafka](https://kafka.apache.org) customized to work with the IBM Cloud.
-  
-#### HRI: 
-  * The Health Record Ingestion service provides a "front door" for Data Integrators to send data into the IBM Cloud, thereby allowing that data to be used by authorized applications that are part of that Cloud account. 
+#### batch ID
 
-#### IBM Cloud Functions: 
-  * A "Serverless", auto-scaling RESTful application service framework in the IBM Cloud. See this [Cloud Docs](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-getting-started) page for more details. 
-  
-#### Management API: 
-  * HRI is designed as a RESTful service layer with an [OpenAPI 3.0](http://spec.openapis.org/oas/v3.0.3) compliant REST API. The "Management API" is the external API layer for accessing all public HRI operations that handle Batch, Streams, and Tenant management. 
+A unique identifier in Health Record Ingestion, referring to one specific batch
 
-#### Multitenancy: 
-  * In the context of HRI, multitenancy is a software architecture pattern that allows multiple users or customers to use a single instance of a specific service, sharing computing resources across those customers. For reference, [see this link](https://www.ibm.com/cloud/learn/multi-tenant).  
-  
-#### PHI: 
-  * Protected Health Information is a term defined by the HIPAA Law and Privacy Rule which provides that "covered entities" must protect certain sensitive personal information of patients and that patients have certain rights to that information. See [this page for HIPAA defintion](https://www.hhs.gov/answers/hipaa/what-is-phi/index.html) and [this page](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html) for more in-depth info on HIPAA Privacy Rule and Protected Health Information.
+#### Data Consumer
 
-#### Stream: 
-  * An HRI Stream represents the entire flow through the HRI for a given tenant. A Stream always has two kafka topics associated with it: an *.in* topic and a *.notification* topic.
+A downstream service, process, or application receiving and further processing data passing through Health Record Ingestion. An example is an HRI Pipeline Adapter, based on NiFi, that persists data to Cloud Object Storage (COS). 
 
-#### Tenant: 
-  * A tenant represents one customer or organization that is a "user" of HRI, on whose behalf a set of Health data is being processed. A tenant can be internal or external to the organization deploying HRI (e.g. IBM Watson Health). All data is isolated between tenants. 
+#### Data Integrator
+
+An upstream service, process, or application that sends data into Health Record Ingestion for processing
+
+#### Elasticsearch
+
+Distributed, open-source document storage used to store various types of data. Health Record Ingestion uses Elasticsearch as its primary data store for metadata about batches. For more information, see [What is Elasticsearch?](https//www.elastic.co/what-is/elasticsearch)
+
+#### Event Streams
+
+On IBM Cloud, the [IBM Event Streams service](https://www.ibm.com/cloud/event-streams) is a managed service instance of [Apache Kafka](https://kafka.apache.org), customized to work with the IBM Cloud.
+
+#### Health Record Ingestion, HRI
+
+This service provides a "front door" for Data Integrators to send data into the IBM Cloud. By doing so, Data Integrators allow that data to be used by authorized applications that are part of that Cloud account. 
+
+#### IBM Cloud Functions
+
+A serverless, automatically-scaling RESTful application service framework in the IBM Cloud. For information, see [Getting started with IBM Cloud Functions](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-getting-started). 
+
+#### Management API
+
+Health Record Ingestion is designed as a RESTful service layer with an [OpenAPI 3.0](http://spec.openapis.org/oas/v3.0.3)-compliant REST API. The Management API is the external API layer for accessing all public Health Record Ingestion operations that handle batch, streams, and tenant management. 
+
+#### multi-tenancy
+
+With Health Record Ingestion, multi-tenancy is a software architecture pattern that allows multiple users or customers to use a single instance of a specific service. The service shares computing resources across those customers. For more information, see [Multi-Tenant](https://www.ibm.com/cloud/learn/multi-tenant) on IBM Cloud.  
+
+#### Protected Health Information, PHI
+
+A term defined by the Health Insurance Portability and Accountability Act (HIPAA) Law and Privacy Rule which provides that "covered entities" must protect certain sensitive personal information of patients and that patients have certain rights to that information. For more information, see [What is PHI?](https://www.hhs.gov/answers/hipaa/what-is-phi/index.html) and [Summary of the HIPAA Privacy Rule](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html) on [hhs.gov](https://www.hhs.gov/).
+
+#### stream
+
+A Health Record Ingestion stream represents the entire flow through the Health Record Ingestion service for a given tenant. A stream always has two Kafka topics associated with it: an \*\.in topic and a \*\.notification topic.
+
+#### tenant
+
+A tenant represents one customer or organization that is a "user" of the Health Record Ingestion service, on whose behalf a set of health data is processed. A tenant can be internal or external to the organization deploying Health Record Ingestion (for example, IBM® Watson Health&trade;). All data is isolated between tenants. 
+
+
+
+
+
+
+
+
+
+
+
+

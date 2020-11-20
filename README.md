@@ -1,5 +1,5 @@
 # Health Record Ingestion service
-The IBM Watson Health, Health Record Ingestion service is an open source project designed to serve as a “front door”, receiving health data for cloud-based solutions. This repo contains the [documentation](https://alvearie.github.io/HRI/) for the project.
+The IBM Watson Health Health Record Ingestion service is an open source project designed to serve as a “front door”, receiving health data for cloud-based solutions. This repo contains the [documentation](https://alvearie.github.io/HRI/) for the project.
 
 Other repos include:
 - [Alvearie/hri-api-spec](https://github.com/Alvearie/hri-api-spec)

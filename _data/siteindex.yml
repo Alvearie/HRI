@@ -4,28 +4,28 @@ docs:
 - title: Introduction
   url: index.html
 
-- title: Processing Flows
+- title: Processing flows
   url: processflow.html
 
-- title: API Specification
+- title: API specification
   url: apispec.html
 
-- title: Multi-Tenancy
+- title: Multi-tenancy
   url: multitenancy.html
 
-- title: Dependency Config
+- title: Dependency configuration
   url: config-setup.html
 
 - title: Administration
   url: admin.html
 
-- title: Monitoring & Logging
+- title: Monitoring and logging
   url: monitorlog.html
 
 - title: Troubleshooting
   url: troubleshooting.html
 
-- title: Glossary of Terms
+- title: Glossary
   url: glossary.html
 
 - title: Roadmap
