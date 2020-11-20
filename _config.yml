@@ -1,6 +1,6 @@
 name: Documentation for the Health Record Ingestion service
 title: Health Record Ingestion service
-description: The HRI is a deployment ready service for streaming data into the cloud.
+description: A deployment-ready service for streaming data into the cloud
 theme: jekyll-theme-dinky
 github:
   repository_url: https://github.com/Alvearie/HRI
