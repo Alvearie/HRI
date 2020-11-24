@@ -111,9 +111,9 @@ Use `zstd` compression when writing to Kafka by setting the [compression.type](h
 
 Event Streams limits messages to 1 MB. To prevent sending records over the limit, set the [message.max.bytes](https://kafka.apache.org/documentation/#message.max.bytes) producer configuration to `1000000`. For records greater than 1 MB compressed, there are two strategies:
 
-1. **External references:** For records that have large binary attachments, for example, images or PDF documents, you can provide a reference to the large resource that is included in the message, rather than the (large) resource itself. For example, you could put a Cloud Object Storage (COS) Object URL or another external data store URL, and key into the message.
+1) **External references:** For records that have large binary attachments, for example, images or PDF documents, you can provide a reference to the large resource that is included in the message, rather than the (large) resource itself. For example, you could put a Cloud Object Storage (COS) Object URL or another external data store URL, and key into the message.
 
-2. **Splitting up records:** You can split records into smaller parts, send them through Health Record Ingestion, and reassemble them using downstream consumers. 
+2) **Splitting up records:** You can split records into smaller parts, send them through Health Record Ingestion, and reassemble them using downstream consumers. 
 
 ### Notification messages
 

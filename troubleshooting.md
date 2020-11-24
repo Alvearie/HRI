@@ -1,14 +1,10 @@
 # Troubleshooting
 
-You can resolve issues with Health Record Ingestion by trying troubleshooting procedures. 
+[**Management API issues**](#management-api-issues)
+<br>[Authentication is possible but has failed or not yet been provided](#authentication-is-possible-but-has-failed-or-not-yet-been-provided)
 
-**[Management API issues](#management-api-issues)**
-
-[Authentication is possible but has failed or not yet been provided](#authentication-is-possible-but-has-failed-or-not-yet-been-provided)
-
-**[Event Streams issues](#event-streams-issues)**
-
-[SSL certificate issues](#ssl-certificate-issues)
+[**Event Streams issues**](#event-streams-issues)
+<br>[SSL certificate issues](#ssl-certificate-issues)
 
 ## Management API issues
 
@@ -36,30 +32,30 @@ This generates a new API key and sets it on the Actions endpoint and the API Gat
 
 **Option 2: Manually update the API endpoints.**
 
-1. You'll need the IBM Cloud CLI and Functions plugin. For steps to install them, see [Installing the CLI and plug-in](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-cli_install).
-2. Set the CLI resource group to where the Management API is deployed: 
+1) You'll need the IBM Cloud CLI and Functions plugin. For steps to install them, see [Installing the CLI and plug-in](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-cli_install).
+2) Set the CLI resource group to where the Management API is deployed: 
    ```
    ibmcloud target -g <*resource_group*>
    ```
-3. Set the CLI Functions namespace to where the Management API is deployed:
+3) Set the CLI Functions namespace to where the Management API is deployed:
    ```
    ibmcloud fn property set --namespace <*namespace*>
    ```
-4. Change the tag to match your release.
-5. Download [updateApi.sh](https://github.com/Alvearie/hri-mgmt-api/blob/master/updateApi.sh).
-6. Run the downloaded script:
+4) Change the tag to match your release.
+5) Download [updateApi.sh](https://github.com/Alvearie/hri-mgmt-api/blob/master/updateApi.sh).
+6) Run the downloaded script:
    ```
    ./updateApi.sh
    ```
 
 **Option 3: Manually update the API gateway JSON configuration.**
 
-1. Follow steps 1 - 3 above to set up the IBM CLI.
-2. Download the API JSON configuration:
+1) Follow steps 1 - 3 above to set up the IBM CLI.
+2) Download the API JSON configuration:
    ```
    ibmcloud fn api get hri-batches > api.json
    ```
-3. Get the API key set for the Actions. Run: 
+3) Get the API key set for the Actions. Run: 
    ```
    ibmcloud fn package get hri_mgmt_api
    ```
@@ -70,7 +66,7 @@ This generates a new API key and sets it on the Actions endpoint and the API Gat
             "value": "hIadvQ8w4nkJeWa3i7OPDb9WqTAUV9d6"
         },
    ```
-4. Edit the `api.json` file, and add or replace the API key. There will be a `x-ibm-configuration` element and a couple levels down an array of `execute` elements, one for each endpoint. Each of these needs to have a `set-variable.actions` element that sets `message.headers.X-Require-Whisk-Auth` to the API key. Make sure there is one for every endpoint and that they match the API keys from step 3. 
+4) Edit the `api.json` file, and add or replace the API key. There will be a `x-ibm-configuration` element and a couple levels down an array of `execute` elements, one for each endpoint. Each of these needs to have a `set-variable.actions` element that sets `message.headers.X-Require-Whisk-Auth` to the API key. Make sure there is one for every endpoint and that they match the API keys from step 3. 
     ```json
     {
         "execute": [
@@ -123,6 +119,5 @@ You can download Let's Encrypt certificates [here](https://letsencrypt.org/certi
 
 For guidance on adding certificates to the Java truststore, see these guides online:
 
-[Oracle&reg; - Import the Certificate as a Trusted Certificate](https://docs.oracle.com/javase/tutorial/security/toolsign/rstep2.html) from Oracle. 
-
-[BounCA - Guide to add self-generated root certificate authorities for 8 operating systems and browsers](https://bounca.org/tutorials/install_root_certificate.html) 
+Oracle&reg;: [Import the Certificate as a Trusted Certificate](https://docs.oracle.com/javase/tutorial/security/toolsign/rstep2.html)  
+BounCA: [Guide to add self-generated root certificate authorities for 8 operating systems and browsers](https://bounca.org/tutorials/install_root_certificate.html) 

@@ -13,13 +13,13 @@ docs:
 - title: Multi-tenancy
   url: multitenancy.html
 
-- title: Dependency configuration
+- title: Dependencies
   url: config-setup.html
 
 - title: Administration
   url: admin.html
 
-- title: Monitoring and logging
+- title: Monitoring, logging
   url: monitorlog.html
 
 - title: Troubleshooting

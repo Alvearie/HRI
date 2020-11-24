@@ -54,14 +54,3 @@ A Health Record Ingestion stream represents the entire flow through the Health R
 
 A tenant represents one customer or organization that is a "user" of the Health Record Ingestion service, on whose behalf a set of health data is processed. A tenant can be internal or external to the organization deploying Health Record Ingestion (for example, IBM® Watson Health&trade;). All data is isolated between tenants. 
 
-
-
-
-
-
-
-
-
-
-
-
