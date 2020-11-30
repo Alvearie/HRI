@@ -32,30 +32,30 @@ This generates a new API key and sets it on the Actions endpoint and the API Gat
 
 **Option 2: Manually update the API endpoints.**
 
-1) You'll need the IBM Cloud CLI and Functions plugin. For steps to install them, see [Installing the CLI and plug-in](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-cli_install).
-2) Set the CLI resource group to where the Management API is deployed: 
+1. You'll need the IBM Cloud CLI and Functions plugin. For steps to install them, see [Installing the CLI and plug-in](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-cli_install).
+2. Set the CLI resource group to where the Management API is deployed: 
    ```
    ibmcloud target -g <*resource_group*>
    ```
-3) Set the CLI Functions namespace to where the Management API is deployed:
+3. Set the CLI Functions namespace to where the Management API is deployed:
    ```
    ibmcloud fn property set --namespace <*namespace*>
    ```
-4) Change the tag to match your release.
-5) Download [updateApi.sh](https://github.com/Alvearie/hri-mgmt-api/blob/master/updateApi.sh).
-6) Run the downloaded script:
+4. Change the tag to match your release.
+5. Download [updateApi.sh](https://github.com/Alvearie/hri-mgmt-api/blob/master/updateApi.sh).
+6. Run the downloaded script:
    ```
    ./updateApi.sh
    ```
 
 **Option 3: Manually update the API gateway JSON configuration.**
 
-1) Follow steps 1 - 3 above to set up the IBM CLI.
-2) Download the API JSON configuration:
+1. Follow steps 1 - 3 above to set up the IBM CLI.
+2. Download the API JSON configuration:
    ```
    ibmcloud fn api get hri-batches > api.json
    ```
-3) Get the API key set for the Actions. Run: 
+3. Get the API key set for the Actions. Run: 
    ```
    ibmcloud fn package get hri_mgmt_api
    ```
@@ -66,7 +66,7 @@ This generates a new API key and sets it on the Actions endpoint and the API Gat
             "value": "hIadvQ8w4nkJeWa3i7OPDb9WqTAUV9d6"
         },
    ```
-4) Edit the `api.json` file, and add or replace the API key. There will be a `x-ibm-configuration` element and a couple levels down an array of `execute` elements, one for each endpoint. Each of these needs to have a `set-variable.actions` element that sets `message.headers.X-Require-Whisk-Auth` to the API key. Make sure there is one for every endpoint and that they match the API keys from step 3. 
+4. Edit the `api.json` file, and add or replace the API key. There will be a `x-ibm-configuration` element and a couple levels down an array of `execute` elements, one for each endpoint. Each of these needs to have a `set-variable.actions` element that sets `message.headers.X-Require-Whisk-Auth` to the API key. Make sure there is one for every endpoint and that they match the API keys from step 3. 
     ```json
     {
         "execute": [
