@@ -24,8 +24,8 @@ The Health Record Ingestion service requires an [Elasticsearch](glossary.md#elas
 7. Specify the desired resource allocations for Elasticsearch. Depending on your expected usage, your values may differ, but the values shown in Figure 1 are sufficient in most cases. Make a note of the **service name** since you might need to use the ELASTIC_INSTANCE parameter in your deployment process. 
 8. Click **Create**.
 
-**Figure 1: Setting up an Elasticsearch cloud resource**
 ![elastic-configure](assets/img/elastic_configure.png)
+**Figure 1: Setting up an Elasticsearch cloud resource**
 
 9. After the Elasticsearch instance becomes active, set an admin password. Do this on the Settings page of the Elasticsearch instance.
    
@@ -34,8 +34,8 @@ The Health Record Ingestion service requires an [Elasticsearch](glossary.md#elas
 10. In the left navigation, click **Service credentials**.
 11. On the page that appears, Next to **Service credentials**, click **New credential**. 
 
-**Figure 2: Setting up service credentials**
 ![elastic-create-cred](assets/img/elastic_create_cred.png)
+**Figure 2: Setting up service credentials**
 
 12. On the page that appears, type a name for the service credential and then add it. Make a note of this name since you might need to use the *ELASTIC_SVC_ACCOUNT* parameter during deployment.
 
@@ -58,15 +58,15 @@ The Health Record Ingestion service also requires an [Event Streams](glossary.md
 9. Make note of the **service name** since you might need to use this *EVENT_STREAMS_INSTANCE* parameter during deployment.
 10. Click **Create**.
 
-**Figure: Setting up an Event Streams cloud resource**
-   ![event-streams-configure](assets/img/event_streams_configure.png)
+![event-streams-configure](assets/img/event_streams_configure.png)
+**Figure 3: Setting up an Event Streams cloud resource**
 
 11. In the left navigation, click **Service credentials**.
 12. On the page that appears, Next to **Service credentials**, click **New credential**.
 13. Create a service credential with **writer** permissions. Provide a name for the service credential and then add it. Make a note of this name because you might need this *EVENT_STREAMS_SVC_ACCOUNT* parameter during deployment.
 
-**Figure 3: Setting up service credentials**
 ![event-streams-create-cred](assets/img/event_streams_create_cred.png)
+**Figure 4: Setting up service credentials**
 
 ***
 

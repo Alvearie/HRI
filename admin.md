@@ -35,8 +35,8 @@ For information about creating an IBM Account, see [Setting up your IBM Cloud ac
 
 2. In Elasticsearch, in the left menu, click **Service credentials** (Figure 1).
 
-**Figure 1: Setting up service credentials**
 ![doc-store-svc-creds](assets/img/doc_store_svc_creds.jpg)
+**Figure 1: Setting up service credentials**
 
 3. On the Service Credentials page, click **New Credential**.
 
@@ -44,8 +44,8 @@ For information about creating an IBM Account, see [Setting up your IBM Cloud ac
 
 5. Click **Add**. This generates your credentials. To view them, click **View Credentials** (Figure 2).
 
-**Figure 2: Viewing service credentials**
 ![view-new-credential](assets/img/view_new_credential.jpg)
+**Figure 2: Viewing service credentials**
 
 6. From the expanded service credentials window, retrieve your newly-created Elasticsearch username and password. You need these for the Elasticsearch REST commands using Curl. 
 
@@ -53,14 +53,15 @@ For information about creating an IBM Account, see [Setting up your IBM Cloud ac
 
 > In Figure 2, in the **Key Name** column, the new credential is `test-cred-1`. In the circled section after **arguments** :[", after the line with **-u**, you'll see a string starting with `ibm_cloud_40cfdf40`. The section of this string before the colon (:) is the UserName that you need. The section after the colon is the password. 
 
-**Figure 3: Example of the UserName and Password**
      UserName: ibm_cloud_40cfdf40_e075_44aa_8bc1_04a247619e4f 
      Password: 79d9379ee59771fdf544c84538879f5ef6446e73c0707a768d031cd86e1e2020
 
+**Figure 3: Example of the UserName and Password**
+
 7. For Curl to authenticate with the IBM Cloud Elasticsearch instance, download the certificate and export it. To do this, navigate to the Management screen for your Elasticsearch instance.
 
-**Figure 4: Example of the Management screen**
    ![doc-store-manage](assets/img/doc_store_manage.jpg)
+**Figure 4: Example of the Management screen**   
 
 8. Scroll down to the **Connections** panel. Click **CLI**. You will be using Curl to run commands from your local environment on the IBM Cloud Elasticsearch instance. For information about using Curl commands, see [Connecting to Elasticsearch with Curl](https://cloud.ibm.com/docs/services/databases-for-elasticsearch?topic=databases-for-elasticsearch-connecting-curl).
 
@@ -78,9 +79,8 @@ For information about creating an IBM Account, see [Setting up your IBM Cloud ac
 > 
 > ```
 
-**Figure 5: Finding the base URL** 
-
 ![doc-store-conns-2](assets/img/doc_store_conns_2.jpg)
+**Figure 5: Finding the base URL** 
 
 **Example of the base URL**
 
@@ -272,8 +272,8 @@ Any user of the Management API, for example, Data Integrators or Consumers, need
 
 > If the correct namespace is ``HRI-API``, go to your IBM Cloud Functions screen in the ``APIs`` menu, and note the name of your Functions namespace.
 
-**Figure 6: A Functions namespace**
 ![functions_apis](assets/img/ibm_functions_apis_namespace.jpg)
+**Figure 6: A Functions namespace**
 
 2. Click the **HRI-API** API. This opens a window with details about the API. 
 

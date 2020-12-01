@@ -24,7 +24,7 @@
 
 > On IBM Cloud, the [IBM Event Streams service](https://www.ibm.com/cloud/event-streams) is a managed service instance of [Apache Kafka](https://kafka.apache.org), customized to work with the IBM Cloud.
 
-#### Health Record Ingestion service, HRI
+#### Health Record Ingestion service HRI
 
 > This service provides a "front door" for Data Integrators to send healthcare-related data into the IBM Cloud. By doing so, Data Integrators allow that data to be used by authorized applications that are part of that Cloud account. 
 

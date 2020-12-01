@@ -18,21 +18,18 @@ The **[Health Record Ingestion service](glossary.md#health-record-ingestion-hri)
 
 The Health Record Ingestion service was developed on the IBM Cloud and currently does not support running on other public or private clouds. However, as part of Project Alvearie, the Health Record Ingestion service is being transitioned into an open source project, with a goal of supporting public and private cloud deployments. The latest version has been pushed to GitHub. The team continues to work on moving all development activities into the open, and making the Health Record Ingestion service support other clouds. For more information about future plans, see the [Roadmap](roadmap.md).   
 
-## Core architecture
-
-
-**Figure: Components of the Health Record Ingestion service**
-
+## Core Architecture
 
 
 ![core-architecture](assets/img/architecture-core.png)
+**Figure: Components of the Health Record Ingestion service**
 
 
 
 
 ### Topics
 
-Kafka (IBM Event Streams) stores streams of records in [topics](glossary.md#topic). Health data can include [Protected Health Information (PHI)](glossary.md#protected-health-information-phi). To meet data separability requirements, **there must be separate topics for each tenant and Data Integrator**. 
+Health data, which may include [Protected Health Information (PHI)](glossary.md#protected-health-information-phi), is written to and read from the Kafka (IBM Event Streams) topics. There **_must be_** _separate topics for each tenant and Data Integrator_ in order to meet data separability requirements.
 
 Additional topics may be created as desired. But, in general, Kafka performs better with a small number of large topics. For each (upstream) input topic, there is an associated (downstream) notification topic for [batch status notifications](https://github.com/Alvearie/hri-api-spec/tree/master/notifications/batchNotification.json)
 
