@@ -1,6 +1,6 @@
 # Introduction
 
-The **[Health Record Ingestion service](glossary.md#health-record-ingestion)** is a deployment-ready service for streaming healthcare-related data into the cloud. It provides a "front door" for [Data Integrators](glossary.md#data-integrator) to send data into the IBM&reg; Cloud, while supporting both batch processing and data streaming workflows. It provides features to initiate and track the movement of a dataset into the IBM Cloud for both Data Integrators and [Data Consumers](glossary.md#data-consumer). 
+The **[Health Record Ingestion service](glossary.md#health-record-ingestion-hri)** is a deployment-ready service for streaming healthcare-related data into the cloud. It provides a "front door" for [Data Integrators](glossary.md#data-integrator) to send data into the IBM&reg; Cloud, while supporting both batch processing and data streaming workflows. It provides features to initiate and track the movement of a dataset into the IBM Cloud for both Data Integrators and [Data Consumers](glossary.md#data-consumer). 
 
 ## Key features
 
@@ -12,7 +12,7 @@ The **[Health Record Ingestion service](glossary.md#health-record-ingestion)** i
 
 - [**Event Streams**](glossary.md#event-streams): This is an IBM Cloud-based [Apache Kafka](https://kafka.apache.org/) managed service, the technology used for producing and consuming the data streams.
 - [**IBM Cloud Functions**](glossary.md#ibm-cloud-functions): Using these, the Health Record Ingestion service exposes a serverless RESTful Management API that is used to control and configure the system. 
-- [**Elasticsearch**](glossary.md#elasticSearch): This is the distributed NoSQL data store that is used to store information about batches.
+- [**Elasticsearch**](glossary.md#elasticsearch): This is the distributed NoSQL data store that is used to store information about batches.
 
 ## IBM Cloud dependencies
 
@@ -20,23 +20,25 @@ The Health Record Ingestion service was developed on the IBM Cloud and currently
 
 ## Core architecture
 
-<br>
+
 **Figure: Components of the Health Record Ingestion service**
-<br><br>
+
+
+
 ![core-architecture](assets/img/architecture-core.png)
-<br><br>
+
+
+
 
 ### Topics
 
 Kafka (IBM Event Streams) stores streams of records in [topics](glossary.md#topic). Health data can include [Protected Health Information (PHI)](glossary.md#protected-health-information-phi). To meet data separability requirements, **there must be separate topics for each tenant and Data Integrator**. 
 
-As needed, create additional topics. Generally, Kafka performs better with a small number of large topics. For each (upstream) input topic, there is an associated (downstream) notification topic for batch status notifications.  
-
-[API specification on GitHub](https://github.com/Alvearie/hri-api-spec/tree/master/notifications/batchNotification.json)
+Additional topics may be created as desired. But, in general, Kafka performs better with a small number of large topics. For each (upstream) input topic, there is an associated (downstream) notification topic for [batch status notifications](https://github.com/Alvearie/hri-api-spec/tree/master/notifications/batchNotification.json)
 
 ### Batches
 
-The data often has organizational requirements to be processed together as a dataset called a [**batch**](glossary.md#batch). Processing can occur with either a partial batch or an entire batch. For these reasons, the Health Record Ingestion service has been built with to support batch dataset processing. 
+The data often has organizational requirements to be processed together as a dataset called a [batch](glossary.md#batch). Processing can occur with either a partial batch or an entire batch. For these reasons, the Health Record Ingestion service has been built with to support batch dataset processing. 
 
 The Data Integrator determines how much data goes into a batch. The Management API provides support for starting, completing, terminating, and searching for batches. Any change to a batch results in a message being written to the associated notification topic in Kafka. 
 
@@ -50,7 +52,7 @@ However, the Health Record Ingestion service **does require** that the `batch Id
 
 Continue learning about the Health Record Ingestion service:
 
-[Processing flows](processflow.md)
+- [Processing flows](processflow.md)
 - [API specification](apispec.md)
 - [Multi-tenancy](multitenancy.md)
 - [Dependencies](config-setup.md)
@@ -64,5 +66,5 @@ Continue learning about the Health Record Ingestion service:
 
 Contact maintainers for the Health Record Ingestion service: 
 
-**David N. Perkins, Team Lead** [david.n.perkins@ibm.com](mailto:david.n.perkins@ibm.com)
-<br>**Aram S. Openden, Maintainer** [aram.openden1@ibm.com](mailto:aram.openden1@ibm.com)
+- **David N. Perkins, Team Lead** [david.n.perkins@ibm.com](mailto:david.n.perkins@ibm.com)
+- **Aram S. Openden, Maintainer** [aram.openden1@ibm.com](mailto:aram.openden1@ibm.com)
