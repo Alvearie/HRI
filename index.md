@@ -20,12 +20,8 @@ The Health Record Ingestion service was developed on the IBM Cloud and currently
 
 ## Core Architecture
 
-
-![core-architecture](assets/img/architecture-core.png)
+![core-architecture](assets/img/architecture-core.png)\<br\>
 **Figure: Components of the Health Record Ingestion service**
-
-
-
 
 ### Topics
 
@@ -35,7 +31,7 @@ Additional topics may be created as desired. But, in general, Kafka performs bet
 
 ### Batches
 
-The data often has organizational requirements to be processed together as a dataset called a [batch](glossary.md#batch). Processing can occur with either a partial batch or an entire batch. For these reasons, the Health Record Ingestion service has been built with to support batch dataset processing. 
+Health Record Datasets often have organizational requirements to be processed together "as a set" (partially or in their entirety) when moving the data into a new cloud instance. Hence, the Health Record Ingestion service has been built with support to process a dataset as a batch. See [batch](glossary.md#batch) for a detailed definition.
 
 The Data Integrator determines how much data goes into a batch. The Management API provides support for starting, completing, terminating, and searching for batches. Any change to a batch results in a message being written to the associated notification topic in Kafka. 
 
