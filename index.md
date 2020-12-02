@@ -20,7 +20,7 @@ The Health Record Ingestion service was developed on the IBM Cloud and currently
 
 ## Core Architecture
 
-![core-architecture](assets/img/architecture-core.png)\<br\>
+![core-architecture](assets/img/architecture-core.png)<br>
 **Figure: Components of the Health Record Ingestion service**
 
 ### Topics

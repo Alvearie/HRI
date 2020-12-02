@@ -6,7 +6,7 @@ In the Health Record Ingestion service, data is isolated between [**Data Integra
 
 Customer organizations create **Data Consumers**, which are downstream processes that read data from the Health Record Ingestion service. The latter is designed so that a single data consumer reads data for a single tenant. However, this does not prevent a consumer from reading data for multiple tenants. Data Consumers **can see data provided by all Data Integrators**. 
 
-![core-architecture](assets/img/multitenancy.png)\<br\>
+![core-architecture](assets/img/multitenancy.png)<br>
 **Figure 1: Core architecture, multi-tenancy and the Health Record Ingestion service**
 
 Figure 1 shows the color-coded flow of two different tenants through the Health Record Ingestion service: 

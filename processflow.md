@@ -2,7 +2,7 @@
 
 Figure 1 provides an overview of how processing works in the Health Record Ingestion service. In it, you'll see the happy path flow through the Health Record Ingestion service for a single [batch](glossary.md#batch). Each numbered step in the diagram is described below.
 
-![core-architecture](assets/img/processflow.png)\<br\>
+![core-architecture](assets/img/processflow.png)<br>
 **Figure 1: Processing flow for a batch**
 
 ### Steps in the processing flow
