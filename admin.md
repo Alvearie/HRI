@@ -6,7 +6,7 @@
 
 - [Setting up curl with Elasticsearch](#setting-up-curl-with-elasticsearch)
 - [Setting the default index template](#setting-the-default-index-template)
-- [Creating a new tenant in Elasticsearch](#create-a-new-tenant-in-elasticsearch)
+- [Creating a new tenant in Elasticsearch](#creating-a-new-tenant-in-elasticsearch)
 
 [**Onboarding Data Integrators**](#onboarding-new-data-integrators)
 <br>[Using the management API stream endpoints](#using-the-management-api-stream-endpoints)
@@ -38,6 +38,7 @@ For information about creating an IBM Account, see [Setting up your IBM Cloud ac
 ![doc-store-svc-creds](assets/img/doc_store_svc_creds.jpg)<br>
 **Figure 1: Setting up service credentials**
 
+{:start="3"}
 3. On the Service Credentials page, click **New Credential**.
 
 4. Type a name for the credentials.
@@ -47,6 +48,7 @@ For information about creating an IBM Account, see [Setting up your IBM Cloud ac
 ![view-new-credential](assets/img/view_new_credential.jpg)<br>
 **Figure 2: Viewing service credentials**
 
+{:start="6"}
 6. From the expanded service credentials window, retrieve your newly-created Elasticsearch username and password. You need these for the Elasticsearch REST commands using Curl. 
 
 > Capture the string that contains both the username and password by copying the ```-u``` "argument" from the JSON string, in the ```connection``` and ```cli``` sections). 
@@ -58,6 +60,7 @@ For information about creating an IBM Account, see [Setting up your IBM Cloud ac
 
 **Figure 3: Example of the UserName and Password**
 
+{:start="7"}
 7. For Curl to authenticate with the IBM Cloud Elasticsearch instance, download the certificate and export it. To do this, navigate to the Management screen for your Elasticsearch instance.
 
    ![doc-store-manage](assets/img/doc_store_manage.jpg)<br>
@@ -69,15 +72,13 @@ For information about creating an IBM Account, see [Setting up your IBM Cloud ac
 
 > ```/Users/[yourLocalUserName]/certs/hri-documentstore.crt```
 
+{:start="10"}
 10. To use the contents of this file with Curl, export it to `CURL_CA_BUNDLE`: 
 
 > ```$ export CURL_CA_BUNDLE=/local-path/to/file/hri-documentstore.crt```
 
-11. In the **Public CLI endpoint** box, find the base URL. In Figure 5, it starts with: 
-
-> ```https://8165307:```
-> 
-> ```
+{:start="11"}
+11. In the **Public CLI endpoint** box, find the base URL. In Figure 5, it starts with ```https://8165307```.
 
 ![doc-store-conns-2](assets/img/doc_store_conns_2.jpg)<br>
 **Figure 5: Finding the base URL** 
@@ -100,11 +101,13 @@ To properly configure newly-created indexes, you must load an index template int
    **Note:** Make sure that you use the version of the file that matches the release tag to which you are deploying.
 
 2. Upload the template. `POST` to the `_template/batches` endpoint: 
-   
-   ```$
-   
-   ```
 
+```
+$ curl -X POST -u ibm_cloud_40cfdf40_e075_44aa_8bc1_04a247619e4f:79d9379ee59771fdf544c84538879f5ef6446e73c0707a768d031cd86e1e2020 \ 
+https://8165307e-6130-4581-942d-20fcfc4e795d.bkvfvtld0lmh0umkfi70.databases.appdomain.cloud:30600/_template/batches \
+-H 'Content-Type: application/json' \
+-d '@batches.json' 
+```
 ### Creating a new tenant in Elasticsearch
 
 In Elasticsearch, every [tenant](glossary.md#tenant) has a separate index. Indexes use the `<tenantId>-batches` naming convention. For example, if the tenant ID is ``24``, the new index name is ``24-batches``. Some solutions may include a ``tenant`` prefix, for example, ``tenant24-batches``. In the tenant ID, you can include any lowercase alphanumeric strings, hyphen (-), and underscore (\_\). The pattern you use determines the tenant ID path parameter required in most of the Management API [endpoints](apispec.md). In addition, this needs to be communicated to [Data Integrators](glossary.md#data-integrator) for that tenant. 
@@ -207,7 +210,7 @@ This creates the following topics for you, both with one partition and a retenti
 
 - `ingest.tenant24.data-int-1.qualifier1.notification`
 
-**Note:** The `numPartitions` and `retentionMs` topic configurations are required. You can pass other optional configurations. For information about these optional fields, see [API specification](apispec.md) for the Health Record Ingestion service.
+**Note:** The `numPartitions` and `retentionMs` topic configurations are required. You can pass other optional configurations. For information about these optional fields, see the [API specification](apispec.md) for the Health Record Ingestion service.
 
 #### Get Streams
 
@@ -275,6 +278,7 @@ Any user of the Management API, for example, Data Integrators or Consumers, need
 ![functions_apis](assets/img/ibm_functions_apis_namespace.jpg)<br>
 **Figure 6: A Functions namespace**
 
+{:start="2"}
 2. Click the **HRI-API** API. This opens a window with details about the API. 
 
 3. To view, create, or delete API keys, go to **Sharing and Keys**.

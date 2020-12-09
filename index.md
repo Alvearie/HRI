@@ -1,6 +1,6 @@
 # Introduction
 
-The **[Health Record Ingestion service](glossary.md#health-record-ingestion-service-hri)** is a deployment-ready service for streaming healthcare-related data into the cloud. It provides a "front door" for [Data Integrators](glossary.md#data-integrator) to send data into the IBM&reg; Cloud, while supporting both batch processing and data streaming workflows. It provides features to initiate and track the movement of a dataset into the IBM Cloud for both Data Integrators and [Data Consumers](glossary.md#data-consumer). 
+The **[Health Record Ingestion service](glossary.md#health-record-ingestion-service)** is a deployment-ready service for streaming healthcare-related data into the cloud. It provides a "front door" for [Data Integrators](glossary.md#data-integrator) to send data into the IBM&reg; Cloud, while supporting both batch processing and data streaming workflows. It provides features to initiate and track the movement of a dataset into the IBM Cloud for both Data Integrators and [Data Consumers](glossary.md#data-consumer). 
 
 ## Key features
 

@@ -18,7 +18,7 @@
 
 #### Elasticsearch
 
-> Distributed, open-source document storage used to store various types of data. The Health Record Ingestion service uses Elasticsearch as its primary data store for metadata about batches. For more information, see [What is Elasticsearch?](https//www.elastic.co/what-is/elasticsearch)
+> Distributed, open-source document storage used to store various types of data. The Health Record Ingestion service uses Elasticsearch as its primary data store for metadata about batches. For more information, see [What is Elasticsearch?](https://www.elastic.co/what-is/elasticsearch)
 
 #### Event Streams
 
@@ -42,11 +42,11 @@
 
 #### Protected Health Information, PHI
 
-> A term defined by the Health Insurance Portability and Accountability Act (HIPAA) Law and Privacy Rule which provides that "covered entities" must protect certain sensitive personal information of patients and that patients have certain rights to that information. For more information, see [What is PHI?](https://www.hhs.gov/answers/hipaa/what-is-phi/index.html) and [Summary of the HIPAA Privacy Rule](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html) on [hhs.gov](https://www.hhs.gov/).
+> A term defined by the Health Insurance Portability and Accountability Act (HIPAA) Law and Privacy Rule which provides that "covered entities" must protect certain sensitive personal information of patients and that patients have certain rights to that information. For more information, see [What is PHI?](https://www.hhs.gov/answers/hipaa/what-is-phi/index.html) and [Summary of the HIPAA Privacy Rule](https://www.hhs.gov/hipaa/for-professionals/privacy/laws-regulations/index.html) on [HHS.gov](https://www.hhs.gov/).
 
 #### stream
 
-> A Health Record Ingestion service stream represents the entire flow through the Health Record Ingestion service for a given tenant. A stream always has two Kafka topics associated with it: an ``\*\.in topic`` and a ``\*\.notification`` topic.
+> A Health Record Ingestion service stream represents the entire flow through the Health Record Ingestion service for a given tenant. A stream always has two Kafka topics associated with it: an ``*.in topic`` and a ``*.notification`` topic.
 
 #### tenant
 

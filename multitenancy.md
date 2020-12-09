@@ -1,10 +1,10 @@
 # Multi-tenancy
 
-The Health Record Ingestion service supports the concept of [**multi-tenancy**](glossary.md#multitenancy), for multiple [tenants](glossary.md#tenant). 
+The Health Record Ingestion service supports the concept of [multi-tenancy](glossary.md#multi-tenancy), for multiple [tenants](glossary.md#tenant). 
 
-In the Health Record Ingestion service, data is isolated between [**Data Integrators**](glossary.md#data-integrator), that is, the organizations that supply health data on behalf of one or more tenants. 
+In the Health Record Ingestion service, data is isolated between [Data Integrators](glossary.md#data-integrator), that is, the organizations that supply health data on behalf of one or more tenants. 
 
-Customer organizations create **Data Consumers**, which are downstream processes that read data from the Health Record Ingestion service. The latter is designed so that a single data consumer reads data for a single tenant. However, this does not prevent a consumer from reading data for multiple tenants. Data Consumers **can see data provided by all Data Integrators**. 
+Customer organizations create [Data Consumers](glossary.md#data-consumer), which are downstream processes that read data from the Health Record Ingestion service. The latter is designed so that a single data consumer reads data for a single tenant. However, this does not prevent a consumer from reading data for multiple tenants. Data Consumers **can see data provided by all Data Integrators**. 
 
 ![core-architecture](assets/img/multitenancy.png)<br>
 **Figure 1: Core architecture, multi-tenancy and the Health Record Ingestion service**
@@ -15,7 +15,7 @@ Figure 1 shows the color-coded flow of two different tenants through the Health 
 - The **blue color** indicates Tenant 2's data. 
 - Data Integrator B is both red and blue, because it processes data for both tenants.
 
-**Note:** Currently, the Management API uses IBM&reg; Functions API keys for authentication. For more information, see [Setting up Management API keys](admin.md#hri-management-api-keys). 
+**Note:** Currently, the Management API uses IBM&reg; Functions API keys for authentication. For more information, see [Setting up Management API keys](admin.md#setting-up-management-api-keys). 
 
 #### Event Streams topics
 In Event Streams, there must be at least one topic for every tenant and Data Integrator. To facilitate this, topics are named using the tenant and Data Integrator's name. Example: **ingest.tenant.data-integrator**

@@ -1,7 +1,7 @@
 # Troubleshooting
 
 [**Management API issues**](#management-api-issues)
-<br>[Authentication is possible but has failed or not yet been provided](#authentication-is-possible-but-has-failed-or-not-yet-been-provided)
+<br>[Authentication is possible but has failed or not yet been provided](#authentication-is-possible-but-either-has-failed-or-not-yet-been-provided)
 
 [**Event Streams issues**](#event-streams-issues)
 <br>[SSL certificate issues](#ssl-certificate-issues)
@@ -22,7 +22,7 @@ The Management API responds with this error:
 
 **Symptom** 
 
-The [IBM&reg; Functions](glossary.md#ibm-cloud-functions) API Gateway is unable to authenticate with the backend IBM Function Actions. Actions have an API key and the API Gateway must be configured to use that API key. Typically, this is due either to the API Gateway missing an API key or to having the wrong API key.
+The [IBM&reg; Cloud Functions](glossary.md#ibm-cloud-functions) API Gateway is unable to authenticate with the backend IBM Function Actions. Actions have an API key and the API Gateway must be configured to use that API key. Typically, this is due either to the API Gateway missing an API key or to having the wrong API key.
 
 **Resolving the problem** 
 

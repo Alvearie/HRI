@@ -1,11 +1,9 @@
 # Dependencies configuration
 
-The information here helps you configure the dependent services that the Health Record Ingestion service uses in your own public or private IBM&reg; Cloud account.
+The information here helps you configure the dependent services that the Health Record Ingestion service uses in your own public or private IBM&reg; Cloud account. Here are the tasks in dependency configuration:
 
-Here are the tasks in dependency configuration:
-
-1. [Creating an Elasticsearch cloud resource](#create-elasticsearch-cloud-resource)
-2. [Creating Event Streams cloud resource](#create-event-streams-cloud-resource)
+1. [Creating an Elasticsearch cloud resource](#creating-an-elasticsearch-cloud-resource)
+2. [Creating an Event Streams cloud resource](#creating-an-event-streams-cloud-resource)
 
 ## Creating an Elasticsearch cloud resource
 
@@ -21,22 +19,27 @@ The Health Record Ingestion service requires an [Elasticsearch](glossary.md#elas
 6. Configure the resource by providing a **service name** and **resource group**.  
    
 > **Note:** In configuration examples in Figure 1, the Resource Group is **YOUR_Resource_GRP**. 
+
+{:start="7"}
 7. Specify the desired resource allocations for Elasticsearch. Depending on your expected usage, your values may differ, but the values shown in Figure 1 are sufficient in most cases. Make a note of the **service name** since you might need to use the ELASTIC_INSTANCE parameter in your deployment process. 
 8. Click **Create**.
 
 ![elastic-configure](assets/img/elastic_configure.png)<br>
 **Figure 1: Setting up an Elasticsearch cloud resource**
 
+{:start="9"}
 9. After the Elasticsearch instance becomes active, set an admin password. Do this on the Settings page of the Elasticsearch instance.
    
 ![elastic-admin-password](assets/img/elastic_admin_password.png)
 
+{:start="10"}
 10. In the left navigation, click **Service credentials**.
 11. On the page that appears, Next to **Service credentials**, click **New credential**. 
 
 ![elastic-create-cred](assets/img/elastic_create_cred.png)<br>
 **Figure 2: Setting up service credentials**
 
+{:start="12"}
 12. On the page that appears, type a name for the service credential and then add it. Make a note of this name since you might need to use the *ELASTIC_SVC_ACCOUNT* parameter during deployment.
 
 ## Creating an Event Streams cloud resource
@@ -54,6 +57,7 @@ The Health Record Ingestion service also requires an [Event Streams](glossary.md
   
 > **Note:** For HIPAA data processing, the **Enterprise** pricing plan (with custom key management via Key Protect) is required. 
 
+{:start="8"}
 8. After creating an **Enterprise** instance of Event Streams, custom key management via Key Protect will need to be explicitly enabled (See [Event Streams documentation](https://cloud.ibm.com/docs/services/EventStreams?topic=eventstreams-managing_encryption#enabling_encryption)).
 9. Make note of the **service name** since you might need to use this *EVENT_STREAMS_INSTANCE* parameter during deployment.
 10. Click **Create**.
@@ -61,8 +65,9 @@ The Health Record Ingestion service also requires an [Event Streams](glossary.md
 ![event-streams-configure](assets/img/event_streams_configure.png)<br>
 **Figure 3: Setting up an Event Streams cloud resource**
 
+{:start="11"}
 11. In the left navigation, click **Service credentials**.
-12. On the page that appears, Next to **Service credentials**, click **New credential**.
+12. On the page that appears, next to **Service credentials**, click **New credential**.
 13. Create a service credential with **writer** permissions. Provide a name for the service credential and then add it. Make a note of this name because you might need this *EVENT_STREAMS_SVC_ACCOUNT* parameter during deployment.
 
 ![event-streams-create-cred](assets/img/event_streams_create_cred.png)<br>
