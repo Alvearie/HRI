@@ -1,0 +1,40 @@
+name: Publish Docs
+
+on: 
+  push:
+    branches: [ 'main', 'support-*' ]
+
+concurrency: publish-${{ github.ref }}
+
+jobs:
+  build:
+    name: Publish Docs
+    runs-on: ubuntu-latest
+    env:
+      VERSION: 3.x
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+  
+      - name: Set Branch env var and Git configs
+        run: | 
+          BRANCH_NAME=${GITHUB_REF##*/}
+          echo "ACTIONS_BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
+          git config user.name "hribld"
+          git config user.email "hribld@us.ibm.com"
+
+      - name: Pip Install
+        run: pip install -r requirements.in
+  
+      - name: Publish
+        if: github.ref != 'refs/heads/main'
+        run: mike deploy --push --update-aliases $VERSION
+
+      - name: Publish Latest
+        if: github.ref == 'refs/heads/main'
+        run: |
+          mike deploy --push --update-aliases $VERSION latest
+          mike set-default --push latest
+
