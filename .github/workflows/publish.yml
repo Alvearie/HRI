@@ -2,7 +2,7 @@ name: Publish Docs
 
 on: 
   push:
-    branches: [ 'main', 'support-*' ]
+    branches: [ 'main', 'support-*', 'WHFHRI-674' ]
 
 concurrency: publish-${{ github.ref }}
 

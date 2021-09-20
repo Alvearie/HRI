@@ -1,0 +1,45 @@
+site_name: HRI Documentation
+site_description: Documentation for the Health Record Ingestion Service
+repo_url: https://github.com/Alvearie/HRI
+docs_dir: ./documentation
+nav:
+  - Introduction: index.md
+  - Processing Flows: processflow.md
+  - API Specification: apispec.md
+  - Multi-Tenancy: multitenancy.md
+  - Validation: validation.md
+  - Deployment: deployment.md
+  - Administration: admin.md
+  - Authorization: auth.md
+  - Performance: performance.md
+  - Monitoring & Logging: monitorlog.md
+  - Troubleshooting: troubleshooting.md
+  - Releases: releases.md
+  - Glossary of Terms: glossary.md
+  - Roadmap: roadmap.md
+
+theme:
+  name: material
+  palette:
+    scheme: default
+
+copyright: 'Copyright &copy; 2021 IBM Watson Health<br>'
+
+site_dir: docs_build
+extra_css:
+  - css/custom_style.css
+extra_javascript:
+  - js/links_in_new_tabs.js
+markdown_extensions:
+  - admonition:
+  - codehilite:
+  - extra:
+  - pymdownx.magiclink:
+  - sane_lists:
+  - smarty:
+  - toc:
+      permalink: True
+
+extra:
+  version:
+    provider: mike
