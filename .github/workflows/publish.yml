@@ -18,10 +18,11 @@ jobs:
         with:
           fetch-depth: 0
   
-      - name: Set Branch env var
+      - name: Set Branch env var and Git configs
         run: | 
           BRANCH_NAME=${GITHUB_REF##*/}
           echo "ACTIONS_BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
+          git config user.name "GitHub Actions"
 
       - name: Pip Install
         run: pip install -r requirements.in
