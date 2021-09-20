@@ -22,7 +22,8 @@ jobs:
         run: | 
           BRANCH_NAME=${GITHUB_REF##*/}
           echo "ACTIONS_BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
-          git config user.name "GitHub Actions"
+          git config user.name "hribld"
+          git config user.email "hribld@us.ibm.com"
 
       - name: Pip Install
         run: pip install -r requirements.in
