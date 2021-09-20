@@ -1,0 +1,837 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the Health Record Ingestion Service">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+    
+    
+      
+        <title>Releases - HRI Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/custom_style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hri-releases" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="HRI Documentation" class="md-header__button md-logo" aria-label="HRI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HRI Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Releases
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Alvearie/HRI/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="HRI Documentation" class="md-nav__button md-logo" aria-label="HRI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    HRI Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Alvearie/HRI/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processflow/" class="md-nav__link">
+        Processing Flows
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apispec/" class="md-nav__link">
+        API Specification
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multitenancy/" class="md-nav__link">
+        Multi-Tenancy
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../admin/" class="md-nav__link">
+        Administration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auth/" class="md-nav__link">
+        Authorization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../performance/" class="md-nav__link">
+        Performance
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitorlog/" class="md-nav__link">
+        Monitoring & Logging
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Releases
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Releases
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v3x" class="md-nav__link">
+    v3.x
+  </a>
+  
+    <nav class="md-nav" aria-label="v3.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v300" class="md-nav__link">
+    v3.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="v3.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release-notes" class="md-nav__link">
+    Release notes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v2x" class="md-nav__link">
+    v2.x
+  </a>
+  
+    <nav class="md-nav" aria-label="v2.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v215" class="md-nav__link">
+    v2.1.5
+  </a>
+  
+    <nav class="md-nav" aria-label="v2.1.5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release-notes_1" class="md-nav__link">
+    Release notes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading_1" class="md-nav__link">
+    Upgrading
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v1x" class="md-nav__link">
+    v1.x
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v125" class="md-nav__link">
+    v1.2.5
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.2.5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release-notes_2" class="md-nav__link">
+    Release notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        Glossary of Terms
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap/" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v3x" class="md-nav__link">
+    v3.x
+  </a>
+  
+    <nav class="md-nav" aria-label="v3.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v300" class="md-nav__link">
+    v3.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="v3.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release-notes" class="md-nav__link">
+    Release notes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v2x" class="md-nav__link">
+    v2.x
+  </a>
+  
+    <nav class="md-nav" aria-label="v2.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v215" class="md-nav__link">
+    v2.1.5
+  </a>
+  
+    <nav class="md-nav" aria-label="v2.1.5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release-notes_1" class="md-nav__link">
+    Release notes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading_1" class="md-nav__link">
+    Upgrading
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v1x" class="md-nav__link">
+    v1.x
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v125" class="md-nav__link">
+    v1.2.5
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.2.5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release-notes_2" class="md-nav__link">
+    Release notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Alvearie/HRI/edit/master/docs/releases.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="hri-releases">HRI Releases<a class="headerlink" href="#hri-releases" title="Permanent link">&para;</a></h1>
+<p>This page lists the releases with notes for the HRI with information about how to upgrade from one version to the next. If upgrading multiple versions, check the upgrade notes of all versions in between. Note that the HRI has an overall release number, which is included here. Individual components of the HRI use the overall major and minor release number as a prefix to their release number, in order to make it easy to identify which versions of components are compatible with each other. For example, <code>v2.1-2.1.5</code> of the <a href="https://github.com/Alvearie/hri-mgmt-api">Management API</a> is compatible with <code>v2.1-1.0.1</code> of <a href="https://github.com/Alvearie/hri-flink-validation-fhir">Flink validation FHIR</a>, because they both have the <code>v2.1</code> prefix.</p>
+<p>Unless stated otherwise in the release notes of a specific version, upgrading the HRI should be achievable without downtime. If you are only upgrading to a new patch version, simply upgrade your existing deployment with the patched version. Otherwise, the new version can be deployed and configured separately in a different namespace while the old HRI version is still active, and the old HRI version can be deleted when migration is complete. In this case, be sure to use the same Elasticsearch and Event Streams instances for both of the HRI versions. Again, please see the upgrade notes for all versions between your current and target versions for any additional requirements.</p>
+<h2 id="v3x">v3.x<a class="headerlink" href="#v3x" title="Permanent link">&para;</a></h2>
+<p>Version <code>3.x</code> is the latest version focused on making the HRI a cloud-portable service. The Management API was moved from IBM Functions to a standard REST Web server and is packaged into a docker image for Kubernetes based deployments.</p>
+<h3 id="v300">v3.0.0<a class="headerlink" href="#v300" title="Permanent link">&para;</a></h3>
+<h4 id="release-notes">Release notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h4>
+<p>Initial open source release of <code>v3.x</code>. This <strong>major HRI release</strong> ports the Management API from IBM Cloud Functions to a standard REST Web server and is packaged into a docker image for Kubernetes based deployments. This release supports the goal of making the HRI a cloud-portable service. </p>
+<h4 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h4>
+<p>This release does not contain breaking changes to the API specification, but there are steps required to migrate the Management API to a Kubernetes based deployment. The same IBM Cloud services (Elasticsearch, Event Streams, AppID, etc.) can be shared between a v2.x deployment and a new v3.x deployment. Below are the migration steps:</p>
+<ol>
+<li>Deploy v3.0.0 to Kubernetes.<ol>
+<li>The same namespace of an older deployment can be used.</li>
+<li>If using validation, also update the Flink and Zookeeper deployments. They are backwards compatible with v2.x.</li>
+<li>Use the same OIDC settings, so that existing configurations are used in the new Management API Kubernetes deployment.</li>
+</ol>
+</li>
+<li>If using validation, migrate existing Flink jobs to the latest validation job jars.<ol>
+<li>Stop existing validation jobs with a savepoint.</li>
+<li>Restart each job from the savepoint using the latest validation job jar and change the Management API URL to the new Kubernetes deployment. All other parameters should remain the same.</li>
+</ol>
+</li>
+<li>Have Data Integrators and Consumers migrate from the old Management API (URL) to the new Kubernetes deployment endpoints.</li>
+<li>When all clients have migrated, delete the IBM Functions namespace that held the old Management API.</li>
+</ol>
+<h2 id="v2x">v2.x<a class="headerlink" href="#v2x" title="Permanent link">&para;</a></h2>
+<p>Version <code>2.x</code> uses IBM Functions to deploy the Management API and includes validation processing. It is scheduled for deprecation in Q4 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.</p>
+<h3 id="v215">v2.1.5<a class="headerlink" href="#v215" title="Permanent link">&para;</a></h3>
+<h4 id="release-notes_1">Release notes<a class="headerlink" href="#release-notes_1" title="Permanent link">&para;</a></h4>
+<p>Initial open source release of <code>v2.x</code>.</p>
+<h4 id="upgrading_1">Upgrading<a class="headerlink" href="#upgrading_1" title="Permanent link">&para;</a></h4>
+<p>This release <strong>does not contain</strong> breaking changes. Data Integrators and Consumers will maintain access to old batches. However, please note that there are changes to the Elasticsearch mapping template, which must be applied to all existing indices (one for every tenant). Below is a series of upgrade tasks. </p>
+<ol>
+<li>The Elasticsearch index mappings need to be updated to account for the new <code>expectedRecordCount</code>, <code>actualRecordCount</code>, <code>invalidThreshold</code>, and <code>invalidRecordCount</code> fields. <code>recordCount</code> is considered deprecated as of v2.0.0 and <code>expectedRecordCount</code> should be used instead.</li>
+<li>Download the new index template from <a href="https://github.com/Alvearie/hri-mgmt-api/blob/v2.1-2.1.5/document-store/index-templates/batches.json">GitHub</a></li>
+<li>Follow these <a href="../troubleshooting/#upgrade-existing-elasticsearch-indices">instructions</a> to upgrade all the existing Elasticsearch indices with the <code>batch.json</code> index template downloaded in the prior step.</li>
+</ol>
+<p>The <code>expectedRecordCount</code>, <code>actualRecordCount</code>, <code>invalidThreshold</code>, and <code>invalidRecordCount</code> fields have also been added to the <a href="../apispec/#batches">Batch API</a> and <a href="../apispec/#notification-messages">Notification Message</a> model, so Data Integrators and Consumers may need to update their integration tools to prevent parsing errors. Additional Batch Notification messages and <code>status</code> values have also been added. For more information, refer to the <a href="../processflow/#batch-status-transitions">Batch Status Transitions</a> documentation.</p>
+<h2 id="v1x">v1.x<a class="headerlink" href="#v1x" title="Permanent link">&para;</a></h2>
+<p>Version <code>1.x</code> uses IBM Functions to deploy the Management API and does not include validation processing. It is scheduled for deprecation in Q2 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.</p>
+<h3 id="v125">v1.2.5<a class="headerlink" href="#v125" title="Permanent link">&para;</a></h3>
+<h4 id="release-notes_2">Release notes<a class="headerlink" href="#release-notes_2" title="Permanent link">&para;</a></h4>
+<p>Initial open source release of <code>v1.x</code>.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../troubleshooting/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Troubleshooting" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Troubleshooting
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../glossary/" class="md-footer__link md-footer__link--next" aria-label="Next: Glossary of Terms" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Glossary of Terms
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 IBM Watson Health<br>
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      
+        <script src="../js/links_in_new_tabs.js"></script>
+      
+    
+  </body>
+</html>
