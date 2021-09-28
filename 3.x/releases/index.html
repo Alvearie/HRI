@@ -408,6 +408,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#v3x" class="md-nav__link">
+    v3.x
+  </a>
+  
+    <nav class="md-nav" aria-label="v3.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v300" class="md-nav__link">
+    v3.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="v3.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release-notes" class="md-nav__link">
+    Release notes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v2x" class="md-nav__link">
     v2.x
   </a>
@@ -424,14 +464,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#release-notes" class="md-nav__link">
+  <a href="#release-notes_1" class="md-nav__link">
     Release notes
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#upgrading" class="md-nav__link">
+  <a href="#upgrading_1" class="md-nav__link">
     Upgrading
   </a>
   
@@ -464,7 +504,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#release-notes_1" class="md-nav__link">
+  <a href="#release-notes_2" class="md-nav__link">
     Release notes
   </a>
   
@@ -544,6 +584,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#v3x" class="md-nav__link">
+    v3.x
+  </a>
+  
+    <nav class="md-nav" aria-label="v3.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v300" class="md-nav__link">
+    v3.0.0
+  </a>
+  
+    <nav class="md-nav" aria-label="v3.0.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#release-notes" class="md-nav__link">
+    Release notes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading" class="md-nav__link">
+    Upgrading
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v2x" class="md-nav__link">
     v2.x
   </a>
@@ -560,14 +640,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#release-notes" class="md-nav__link">
+  <a href="#release-notes_1" class="md-nav__link">
     Release notes
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#upgrading" class="md-nav__link">
+  <a href="#upgrading_1" class="md-nav__link">
     Upgrading
   </a>
   
@@ -600,7 +680,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#release-notes_1" class="md-nav__link">
+  <a href="#release-notes_2" class="md-nav__link">
     Release notes
   </a>
   
@@ -636,23 +716,45 @@
                 <h1 id="hri-releases">HRI Releases<a class="headerlink" href="#hri-releases" title="Permanent link">&para;</a></h1>
 <p>This page lists the releases with notes for the HRI with information about how to upgrade from one version to the next. If upgrading multiple versions, check the upgrade notes of all versions in between. Note that the HRI has an overall release number, which is included here. Individual components of the HRI use the overall major and minor release number as a prefix to their release number, in order to make it easy to identify which versions of components are compatible with each other. For example, <code>v2.1-2.1.5</code> of the <a href="https://github.com/Alvearie/hri-mgmt-api">Management API</a> is compatible with <code>v2.1-1.0.1</code> of <a href="https://github.com/Alvearie/hri-flink-validation-fhir">Flink validation FHIR</a>, because they both have the <code>v2.1</code> prefix.</p>
 <p>Unless stated otherwise in the release notes of a specific version, upgrading the HRI should be achievable without downtime. If you are only upgrading to a new patch version, simply upgrade your existing deployment with the patched version. Otherwise, the new version can be deployed and configured separately in a different namespace while the old HRI version is still active, and the old HRI version can be deleted when migration is complete. In this case, be sure to use the same Elasticsearch and Event Streams instances for both of the HRI versions. Again, please see the upgrade notes for all versions between your current and target versions for any additional requirements.</p>
+<h2 id="v3x">v3.x<a class="headerlink" href="#v3x" title="Permanent link">&para;</a></h2>
+<p>Version <code>3.x</code> is the latest version focused on making the HRI a cloud-portable service. The Management API was moved from IBM Functions to a standard REST Web server and is packaged into a docker image for Kubernetes based deployments.</p>
+<h3 id="v300">v3.0.0<a class="headerlink" href="#v300" title="Permanent link">&para;</a></h3>
+<h4 id="release-notes">Release notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h4>
+<p>Initial open source release of <code>v3.x</code>. This <strong>major HRI release</strong> ports the Management API from IBM Cloud Functions to a standard REST Web server and is packaged into a docker image for Kubernetes based deployments. This release supports the goal of making the HRI a cloud-portable service. </p>
+<h4 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h4>
+<p>This release does not contain breaking changes to the API specification, but there are steps required to migrate the Management API to a Kubernetes based deployment. The same IBM Cloud services (Elasticsearch, Event Streams, AppID, etc.) can be shared between a v2.x deployment and a new v3.x deployment. Below are the migration steps:</p>
+<ol>
+<li>Deploy v3.0.0 to Kubernetes.<ol>
+<li>The same namespace of an older deployment can be used.</li>
+<li>If using validation, also update the Flink and Zookeeper deployments. They are backwards compatible with v2.x.</li>
+<li>Use the same OIDC settings, so that existing configurations are used in the new Management API Kubernetes deployment.</li>
+</ol>
+</li>
+<li>If using validation, migrate existing Flink jobs to the latest validation job jars.<ol>
+<li>Stop existing validation jobs with a savepoint.</li>
+<li>Restart each job from the savepoint using the latest validation job jar and change the Management API URL to the new Kubernetes deployment. All other parameters should remain the same.</li>
+</ol>
+</li>
+<li>Have Data Integrators and Consumers migrate from the old Management API (URL) to the new Kubernetes deployment endpoints.</li>
+<li>When all clients have migrated, delete the IBM Functions namespace that held the old Management API.</li>
+</ol>
 <h2 id="v2x">v2.x<a class="headerlink" href="#v2x" title="Permanent link">&para;</a></h2>
 <p>Version <code>2.x</code> uses IBM Functions to deploy the Management API and includes validation processing. It is scheduled for deprecation in Q4 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.</p>
 <h3 id="v215">v2.1.5<a class="headerlink" href="#v215" title="Permanent link">&para;</a></h3>
-<h4 id="release-notes">Release notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h4>
+<h4 id="release-notes_1">Release notes<a class="headerlink" href="#release-notes_1" title="Permanent link">&para;</a></h4>
 <p>Initial open source release of <code>v2.x</code>.</p>
-<h4 id="upgrading">Upgrading<a class="headerlink" href="#upgrading" title="Permanent link">&para;</a></h4>
+<h4 id="upgrading_1">Upgrading<a class="headerlink" href="#upgrading_1" title="Permanent link">&para;</a></h4>
 <p>This release <strong>does not contain</strong> breaking changes. Data Integrators and Consumers will maintain access to old batches. However, please note that there are changes to the Elasticsearch mapping template, which must be applied to all existing indices (one for every tenant). Below is a series of upgrade tasks. </p>
 <ol>
 <li>The Elasticsearch index mappings need to be updated to account for the new <code>expectedRecordCount</code>, <code>actualRecordCount</code>, <code>invalidThreshold</code>, and <code>invalidRecordCount</code> fields. <code>recordCount</code> is considered deprecated as of v2.0.0 and <code>expectedRecordCount</code> should be used instead.</li>
-<li>Download the new index template from <a href="https://github.com/Alvearie/hri-mgmt-api/blob/support-2.x/document-store/index-templates/batches.json">GitHub</a></li>
+<li>Download the new index template from <a href="https://github.com/Alvearie/hri-mgmt-api/blob/v2.1-2.1.5/document-store/index-templates/batches.json">GitHub</a></li>
 <li>Follow these <a href="../troubleshooting/#upgrade-existing-elasticsearch-indices">instructions</a> to upgrade all the existing Elasticsearch indices with the <code>batch.json</code> index template downloaded in the prior step.</li>
 </ol>
 <p>The <code>expectedRecordCount</code>, <code>actualRecordCount</code>, <code>invalidThreshold</code>, and <code>invalidRecordCount</code> fields have also been added to the <a href="../apispec/#batches">Batch API</a> and <a href="../apispec/#notification-messages">Notification Message</a> model, so Data Integrators and Consumers may need to update their integration tools to prevent parsing errors. Additional Batch Notification messages and <code>status</code> values have also been added. For more information, refer to the <a href="../processflow/#batch-status-transitions">Batch Status Transitions</a> documentation.</p>
 <h2 id="v1x">v1.x<a class="headerlink" href="#v1x" title="Permanent link">&para;</a></h2>
 <p>Version <code>1.x</code> uses IBM Functions to deploy the Management API and does not include validation processing. It is scheduled for deprecation in Q2 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.</p>
 <h3 id="v125">v1.2.5<a class="headerlink" href="#v125" title="Permanent link">&para;</a></h3>
-<h4 id="release-notes_1">Release notes<a class="headerlink" href="#release-notes_1" title="Permanent link">&para;</a></h4>
+<h4 id="release-notes_2">Release notes<a class="headerlink" href="#release-notes_2" title="Permanent link">&para;</a></h4>
 <p>Initial open source release of <code>v1.x</code>.</p>
                 
               
