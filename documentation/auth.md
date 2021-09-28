@@ -16,8 +16,6 @@ The Management API uses [OAuth 2.0](https://oauth.net/2/), [OIDC](https://openid
 ### Batch Endpoint Authorization
 Regarding batch endpoint authorization with JWT Tokens, the HRI does not include an authorization or authentication service, so users must provide one themselves and configure it as per the specification below. Oauth 2 and OIDC are widely used standards which allow solutions to use their own authorization & authentication. Your token issuer must be OIDC compliant, because the OIDC defined well-known endpoints are how the Management API will validate access tokens. HRI uses IBM Cloud App ID for its reference implementation of an OIDC-compliant authorization service. There are instructions provided below for how HRI users can configure their own instance of IBM Cloud App ID.
 
-Optionally, if solutions need to use a different authorization mechanism, authorization on the batch endpoints can be disabled. Solutions would deploy their own authorization proxy service, which would receive the initial request, perform authorization, and then proxy calls to the Management API service.
-
 ### Required Token Scopes:
 You must configure your authorization service to include HRI roles and tenant [scopes](https://oauth.net/2/scope/) in the access tokens (Note: `scope` is a standard claim that is a space-separated list of strings).
 
@@ -31,7 +29,7 @@ A Tenant scope matching the _tenant ID_ is required every time you call a "batch
 
 For example, if a data integrator tries to create a batch by making an HTTP POST call to `tenants/24/batches`, the token must contain scope `tenant_24`, where the `24` is the tenantId.
 
-Also, see [Multi-tenancy](multitenancy.md) for more information about tenants and roles. See the API [spec](https://github.com/Alvearie/hri-api-spec/blob/main/management-api/management.yml) for more details about required roles for specific endpoints.
+Also, see [Multi-tenancy](multitenancy.md) for more information about tenants and roles. See the API [spec](https://github.com/Alvearie/hri-api-spec/blob/support-2.x/management-api/management.yml) for more details about required roles for specific endpoints.
 
 
 ### Configuring the Token Issuer

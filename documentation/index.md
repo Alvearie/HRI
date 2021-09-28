@@ -15,7 +15,7 @@ The key features are:
 - [Flink](https://flink.apache.org/) is a stateful stream processing framework that is used to perform validation.
 
 ## IBM Cloud Dependencies  
-The HRI was developed on the IBM Cloud and currently does not support running on other public or private clouds. However, as a part of Alvearie, the goal is to support other public and private cloud, which the team continues to work towards. Please see the [Roadmap](roadmap.md) for additional details.   
+The HRI was developed on the IBM Cloud and currently does not support running on other public or private clouds. However, as a part of Alvearie, the goal is to support other public and private clouds, which the team continues to work towards. Please see the [Roadmap](roadmap.md) for additional details.   
 
 ## Core Architecture
 ![core-architecture](images/architecture-core.png)

@@ -2,7 +2,7 @@
 The HRI consists of two separate APIs: the Management API and Apache Kafka.
 
 ## Management API Specification
-The Management API is defined using the OpenAPI 3.0 specification: [management.yml](https://github.com/Alvearie/hri-api-spec/blob/main/management-api/management.yml).
+The Management API is defined using the OpenAPI 3.0 specification: [management.yml](https://github.com/Alvearie/hri-api-spec/blob/support-2.x/management-api/management.yml).
 You can open the file directly or use a program such as IntelliJ or [Swagger UI](https://swagger.io/tools/swagger-ui/download/) to view it.
 
 ### HRI Tenants & Elasticsearch Indices
@@ -103,10 +103,10 @@ The HRI **does** have the following requirements and recommendations:
 
   
 ### Notification Messages
-The notification messages are json-encoded batches. They match the schema returned by the Management API described above, which is also defined here: [batchNotification.json](https://github.com/Alvearie/hri-api-spec/blob/main/notifications/batchNotification.json).
+The notification messages are json-encoded batches. They match the schema returned by the Management API described above, which is also defined here: [batchNotification.json](https://github.com/Alvearie/hri-api-spec/blob/support-2.x/notifications/batchNotification.json).
 
 ### Invalid Record Notifications
-When validation encounters an invalid record, an invalid record notification is written to the `*.invalid` topic. It contains a failure message, the batchId, and a pointer to the original record. Below is a table of the fields, and the json schema is defined here: [invalidRecord.json](https://github.com/Alvearie/hri-api-spec/blob/main/notifications/invalidRecord.json).
+When validation encounters an invalid record, an invalid record notification is written to the `*.invalid` topic. It contains a failure message, the batchId, and a pointer to the original record. Below is a table of the fields, and the json schema is defined here: [invalidRecord.json](https://github.com/Alvearie/hri-api-spec/blob/support-2.x/notifications/invalidRecord.json).
 
 | Field | Description |
 |-------|-------------|

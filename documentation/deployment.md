@@ -38,37 +38,23 @@ NOTE: The Event Streams Enterprise plan is expensive, which is why we recommend 
 ## Create Authorization Service
 The HRI Management API requires an authorization service. Integration testing has been performed with [IBM Cloud App ID](https://www.ibm.com/cloud/app-id), but any compliant service can be used. See [Authorization](auth.md) for more details about the requirements and how to set up an App ID cloud service.
 
-## Deploy the HRI Management API to Kubernetes
-The Management API is packaged in a docker container for Kubernetes deployments and available on [GitHub](https://github.com/Alvearie/hri-mgmt-api/pkgs/container/hri-mgmt-api%2Fmgmt-api). The service is stateless, so you can scale up to as many pods as needed or even deploy multiple instances that use the same Elasticsearch, Kafka, and Authorization services.
+## Deploy the HRI Management API to IBM Functions
+The Management API is designed to run on [IBM Functions](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-about) and can be deployed using the IBM Cloud CLI Functions plug-in. The [deploy.sh](https://github.com/Alvearie/hri-mgmt-api/blob/support-2.x/deploy.sh) script automates the process by creating an IBM Functions namespace, deploying the code and API, setting configuration values, and binding Elasticsearch and Event Streams service credentials. There are also scripts for configuring Elasticsearch, [elastic.sh](https://github.com/Alvearie/hri-mgmt-api/blob/support-2.x/docker/elastic.sh), and performing initial configurations of App ID, [appid.sh](https://github.com/Alvearie/hri-mgmt-api/blob/support-2.x/docker/appid.sh). These scripts are packaged into a docker container with the compiled code to support automated deployments and are available on [GitHub](https://github.com/Alvearie/hri-mgmt-api/pkgs/container/hri-mgmt-api%2Fmgmt-api-deploy). Below is a table of the environment variables used by the scripts.
 
-The Management API process only needs a valid configuration, which can be provided by any combination of command line arguments, environment variables, and a yaml file. Conflicts are resolved in the order: command line arguments (highest priority), environment variables, and yaml file(lowest priority). Below is a table of the configuration options.
-
-| CLI Flag | Description | Required
-|:---------|:------------|:---------
-|`-config-path` | Path to a config file, default "./config.yml" | 
-|`-elastic-crn` | Elasticsearch service CRN | Yes
-|`-elastic-url` | The base url to the Elasticsearch instance | Yes 
-|`-elastic-cert` | Elasticsearch TLS public certificate | Yes
-|`-elastic-username` | Elasticsearch user name | Yes
-|`-elastic-password` | Elasticsearch password | Yes
-|`-kafka-admin-url` | Kafka administration url | Yes
-|`-kafka-brokers` | A list of Kafka brokers, separated by "," | Yes
-|`-kafka-properties` | A list of Kafka properties, entries separated by ",", key value pairs separated by ":" | Yes
-|`-auth-disabled` | `true` to disable OAuth Authorization, default: false |
-|`-oidc-issuer` | The base URL of the OIDC issuer to use for OAuth authentication (e.g. https://us-south.appid.cloud.ibm.com/oauth/v4/<tenantId>). | If `-auth-disabled` is false.
-|`-jwt-audience-id` | The ID of the HRI Management API within your authorization service. | If `-auth-disabled` is false.
-|`-tls-enabled` | Toggle enabling an encrypted connection via TLS, default: false | 
-|`-tls-cert-path` | Path to the TLS certificate. | If `-tls-enabled` is true.
-|`-tls-key-path` | Path to the TLS key. | If `-tls-enabled` is true.
-|`-new-relic-enabled` | True to enable New Relic monitoring, default: false
-|`-new-relic-app-name` | Application name to aggregate data under in New Relic. | If `-new-relic-enabled` is true.
-|`-new-relic-license-key` | New Relic license key. | If `-new-relic-enabled` is true.
-|`-validation` | True to enable record validation, default false |
-|`-log-level` | Minimum Log Level for logging output. Available levels are: Trace, Debug, Info, Warning, Error, Fatal and Panic. Default "info") |
-
-The associated environment variable is named by removing the leading `-`, capitalizing all characters, and replacing remaining `-` with `_`. For example, the `-auth-disabled` flag has the `AUTH_DISABLED` environment variable.
-
-Yaml file entries are named by removing the leading `-`. For example, the `-auth-disabled` flag has the `auth-disabled` yaml entry.
+|  Name     | Description         |
+|-----------|---------------------|
+| IBM_CLOUD_API_KEY   | The API key for IBM Cloud |
+| IBM_CLOUD_REGION    | Target IBM Cloud Region, e.g. 'ibm:yp:us-south' |
+| RESOURCE_GROUP      | Target IBM Cloud Resource Group |
+| NAMESPACE           | Target IBM Functions namespace |
+| ELASTIC_INSTANCE    | Name of Elasticsearch instance |
+| ELASTIC_SVC_ACCOUNT | Name of Elasticsearch service ID |
+| KAFKA_INSTANCE      | Name of Event Streams (Kafka) instance |
+| KAFKA_SVC_ACCOUNT   | Name of Event Streams (Kafka) service ID |
+| VALIDATION          | Whether to deploy the Management API with Validation, e.g. 'true', 'false' |
+| OIDC_ISSUER         | The base URL of the OIDC issuer to use for OAuth authentication (e.g. `https://us-south.appid.cloud.ibm.com/oauth/v4/<tenantId>`)               |
+| APPID_PREFIX        | (Optional) Prefix string to append to the AppId applications and roles created during deployment                                                |
+| SET_UP_APPID        | (Optional) defaults to true. Set to false if you do not want the App ID set-up enabled. |
 
 ## Validation Processing
 Validation processing is an optional feature that validates the data as it flows through the HRI. See [Validation](validation.md) for details on the validation performed and customization options. See [Processing Flows](processflow.md) for details on how it fits into the overall architecture. 

@@ -35,13 +35,13 @@ Additional Resources:
     - GitHub repo: [https://github.com/Alvearie/hri-flink-pipeline-core](https://github.com/Alvearie/hri-flink-pipeline-core)
     - Dependency declaration: 
 
-            org.alvearie.hri.flink:hri-flink-pipeline-core:3.0-1.0.2
+            org.alvearie.hri.flink:hri-flink-pipeline-core:2.1-1.0.1
 
 - Flink Validation FHIR - FHIR schema validation written in Scala. The FHIR validator is also published as a library in GitHub packages.
     - GitHub repo: [https://github.com/Alvearie/hri-flink-validation-fhir](https://github.com/Alvearie/hri-flink-validation-fhir)
     - FHIR schema validator dependency declaration: 
 
-            org.alvearie..hri.flink:hri-flink-validator-fhir:3.0-1.0.2
+            org.alvearie..hri.flink:hri-flink-validator-fhir:2.1-1.0.1
   
 - Flink Validation Passthrough - Passthrough validation written in Java
     - GitHub repo: [https://github.com/Alvearie/hri-flink-validation-passthrough](https://github.com/Alvearie/hri-flink-validation-passthrough)

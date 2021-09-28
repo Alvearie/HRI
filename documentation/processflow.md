@@ -48,11 +48,11 @@ There's no validation processing and only the `*.in` and `*.notification` topics
 8. The Data Consumer receives the batch notification message.
 
 ## Batch Status Transitions
-Batches can go through several status changes, and for each change a notification message is written to the `*.notification` topic. Below is a state diagram indicating all the states the transition events. Note that the transitions are slightly different depending on whether validation has been enabled.
+Batches can go through several status changes, and for each change a notification message is written to the `*.notification` topic. Below is a state diagram indicating all the states and the transition events. Note that the transitions are slightly different depending on whether validation has been enabled.
 
 ![batch-status](images/batch-status.png) 
 
 ### Interleaved Batches
-The HRI does not prevent the Data Integrator from writing multiples batches into the same topic at the same time. Every record will have a header value that specifies the ["batchId"](glossary.md#batch-id), which is returned from the Management API (see [hri-api-spec/management-api/management.yml](https://github.com/Alvearie/hri-api-spec/blob/main/management-api/management.yml)), so the Data Consumer can distinguish each one. 
+The HRI does not prevent the Data Integrator from writing multiples batches into the same topic at the same time. Every record will have a header value that specifies the ["batchId"](glossary.md#batch-id), which is returned from the Management API (see [hri-api-spec/management-api/management.yml](https://github.com/Alvearie/hri-api-spec/blob/support-2.x/management-api/management.yml)), so the Data Consumer can distinguish each one. 
 
 In practice, the Data Integrator may only write one batch at a time. As necessary, additional input topics can be created to prevent the interleaving of batches or data types. However, please note that, in general, **_Kafka performs better with a small number of large topics_**.
