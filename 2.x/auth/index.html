@@ -1,0 +1,1022 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the Health Record Ingestion Service">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>Authorization - HRI Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/custom_style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#authorization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="HRI Documentation" class="md-header__button md-logo" aria-label="HRI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HRI Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Authorization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Alvearie/HRI/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="HRI Documentation" class="md-nav__button md-logo" aria-label="HRI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    HRI Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Alvearie/HRI/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processflow/" class="md-nav__link">
+        Processing Flows
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apispec/" class="md-nav__link">
+        API Specification
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multitenancy/" class="md-nav__link">
+        Multi-Tenancy
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../admin/" class="md-nav__link">
+        Administration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Authorization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Authorization
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#apache-kafka-authorization" class="md-nav__link">
+    Apache Kafka Authorization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hri-management-api" class="md-nav__link">
+    HRI Management API
+  </a>
+  
+    <nav class="md-nav" aria-label="HRI Management API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch-endpoint-authorization" class="md-nav__link">
+    Batch Endpoint Authorization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-token-scopes" class="md-nav__link">
+    Required Token Scopes:
+  </a>
+  
+    <nav class="md-nav" aria-label="Required Token Scopes:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hri-role-scopes" class="md-nav__link">
+    HRI Role Scopes:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tenant-scopes" class="md-nav__link">
+    Tenant Scopes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-token-issuer" class="md-nav__link">
+    Configuring the Token Issuer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-app-id-as-your-authorization-service" class="md-nav__link">
+    Using App ID as Your Authorization Service
+  </a>
+  
+    <nav class="md-nav" aria-label="Using App ID as Your Authorization Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-configuration" class="md-nav__link">
+    Initial Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-data-integrators-and-consumers" class="md-nav__link">
+    Adding Data Integrators and Consumers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hri-internal-application-setup" class="md-nav__link">
+    HRI Internal Application Setup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorization-workflow-example" class="md-nav__link">
+    Authorization Workflow Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../performance/" class="md-nav__link">
+        Performance
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitorlog/" class="md-nav__link">
+        Monitoring & Logging
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/" class="md-nav__link">
+        Releases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        Glossary of Terms
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap/" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#apache-kafka-authorization" class="md-nav__link">
+    Apache Kafka Authorization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hri-management-api" class="md-nav__link">
+    HRI Management API
+  </a>
+  
+    <nav class="md-nav" aria-label="HRI Management API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#batch-endpoint-authorization" class="md-nav__link">
+    Batch Endpoint Authorization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required-token-scopes" class="md-nav__link">
+    Required Token Scopes:
+  </a>
+  
+    <nav class="md-nav" aria-label="Required Token Scopes:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hri-role-scopes" class="md-nav__link">
+    HRI Role Scopes:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tenant-scopes" class="md-nav__link">
+    Tenant Scopes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-token-issuer" class="md-nav__link">
+    Configuring the Token Issuer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-app-id-as-your-authorization-service" class="md-nav__link">
+    Using App ID as Your Authorization Service
+  </a>
+  
+    <nav class="md-nav" aria-label="Using App ID as Your Authorization Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-configuration" class="md-nav__link">
+    Initial Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-data-integrators-and-consumers" class="md-nav__link">
+    Adding Data Integrators and Consumers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hri-internal-application-setup" class="md-nav__link">
+    HRI Internal Application Setup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorization-workflow-example" class="md-nav__link">
+    Authorization Workflow Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Alvearie/HRI/edit/master/docs/auth.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="authorization">Authorization<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h1>
+<h2 id="apache-kafka-authorization">Apache Kafka Authorization<a class="headerlink" href="#apache-kafka-authorization" title="Permanent link">&para;</a></h2>
+<p>Apache Kafka supports several <a href="https://kafka.apache.org/documentation/#security_overview">types of authentication</a>, but managed cloud services tend to limit it to one or two methods and implement their own authorization mechanism. For IBM Event Streams, see their <a href="https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-connecting">connecting</a> and <a href="https://cloud.ibm.com/docs/EventStreams?topic=EventStreams-security">security</a> documentation and our <a href="../admin/">administration</a> page for more details.</p>
+<h2 id="hri-management-api">HRI Management API<a class="headerlink" href="#hri-management-api" title="Permanent link">&para;</a></h2>
+<p>The Management API uses <a href="https://oauth.net/2/">OAuth 2.0</a>, <a href="https://openid.net/connect/">OIDC</a>, and <a href="https://tools.ietf.org/html/rfc8693">JWT</a> standards for authorization.  The specific types of authorization <a href="https://csrc.nist.gov/glossary/term/token">tokens</a> used by the Management API endpoints are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Path</th>
+<th>Authorization Requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tenant</td>
+<td><code>/tenants</code></td>
+<td>require IAM tokens with permissions to the Elasticsearch instance</td>
+</tr>
+<tr>
+<td>stream</td>
+<td><code>/tenants/&lt;tenantId&gt;/streams</code></td>
+<td>require IAM tokens with permissions to the Event Streams instance</td>
+</tr>
+<tr>
+<td>batch</td>
+<td><code>/tenants/&lt;tenantId&gt;/batches</code></td>
+<td>are optionally authorized by using JWT tokens from an OIDC-compliant authorization service, or with a custom authentication proxy service.  <a href="#batch-endpoint-authorization">More details on batch endpoint authorization below.</a></td>
+</tr>
+<tr>
+<td>healthcheck</td>
+<td><code>/healthcheck</code></td>
+<td><strong>does not</strong> require any authorization</td>
+</tr>
+</tbody>
+</table>
+<h3 id="batch-endpoint-authorization">Batch Endpoint Authorization<a class="headerlink" href="#batch-endpoint-authorization" title="Permanent link">&para;</a></h3>
+<p>Regarding batch endpoint authorization with JWT Tokens, the HRI does not include an authorization or authentication service, so users must provide one themselves and configure it as per the specification below. Oauth 2 and OIDC are widely used standards which allow solutions to use their own authorization &amp; authentication. Your token issuer must be OIDC compliant, because the OIDC defined well-known endpoints are how the Management API will validate access tokens. HRI uses IBM Cloud App ID for its reference implementation of an OIDC-compliant authorization service. There are instructions provided below for how HRI users can configure their own instance of IBM Cloud App ID.</p>
+<h3 id="required-token-scopes">Required Token Scopes:<a class="headerlink" href="#required-token-scopes" title="Permanent link">&para;</a></h3>
+<p>You must configure your authorization service to include HRI roles and tenant <a href="https://oauth.net/2/scope/">scopes</a> in the access tokens (Note: <code>scope</code> is a standard claim that is a space-separated list of strings).</p>
+<h4 id="hri-role-scopes">HRI Role Scopes:<a class="headerlink" href="#hri-role-scopes" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>hri_data_integrator</code> - Data Integrator role; allows access to create, query, and update batches. Results are filtered to batches that the Data Integrator created. Note that the <code>sub</code> claim in the access token is used to identify the Data Integrator and stored in the batch <code>integratorId</code> field.</li>
+<li><code>hri_consumer</code> - Data Consumer role; allows access to query batches. Results are not filtered.</li>
+<li><code>hri_internal</code> - Internal HRI validation role; allows the Flink Validation job to call the batch <code>processingComplete</code> or <code>fail</code> endpoints.</li>
+</ul>
+<h4 id="tenant-scopes">Tenant Scopes<a class="headerlink" href="#tenant-scopes" title="Permanent link">&para;</a></h4>
+<p>A Tenant scope matching the <em>tenant ID</em> is required every time you call a &ldquo;batch&rdquo; endpoint in the Management API. The scope must have <code>tenant_</code> as a prefix to the tenant ID.</p>
+<p>For example, if a data integrator tries to create a batch by making an HTTP POST call to <code>tenants/24/batches</code>, the token must contain scope <code>tenant_24</code>, where the <code>24</code> is the tenantId.</p>
+<p>Also, see <a href="../multitenancy/">Multi-tenancy</a> for more information about tenants and roles. See the API <a href="https://github.com/Alvearie/hri-api-spec/blob/support-2.x/management-api/management.yml">spec</a> for more details about required roles for specific endpoints.</p>
+<h3 id="configuring-the-token-issuer">Configuring the Token Issuer<a class="headerlink" href="#configuring-the-token-issuer" title="Permanent link">&para;</a></h3>
+<p>The token issuer is a configuration parameter of the Management API, and only one issuer may be set. The issuer must match the <code>iss</code> claim in the access token.  See <a href="../deployment/">deployment</a> for more details.</p>
+<h2 id="using-app-id-as-your-authorization-service">Using App ID as Your Authorization Service<a class="headerlink" href="#using-app-id-as-your-authorization-service" title="Permanent link">&para;</a></h2>
+<p><a href="https://www.ibm.com/cloud/app-id">IBM Cloud App ID</a> is an IBM Cloud managed authorization and authentication service. App ID supports custom claims/scopes for client credentials by creating &lsquo;Applications&rsquo; with scopes and assigning them to other &lsquo;Applications&rsquo; via roles.</p>
+<p>Below are the manual steps to configure App ID for your reference, but you will probably want to automate some or all of these steps for your solution using the App ID <a href="https://us-south.appid.cloud.ibm.com/swagger-ui">API</a>. (Note all examples here will be of the AppID-Landing App ID service instance.)</p>
+<h3 id="initial-configuration">Initial Configuration<a class="headerlink" href="#initial-configuration" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Create an <strong>&ldquo;HRI&rdquo;</strong> Application and its associated scopes. This application represents the HRI as a &lsquo;protected&rsquo; resource (API) that other clients will be granted permissions to access. It is not a client that will connect to the HRI, and it&rsquo;s credentials should never be used.</li>
+</ol>
+<ul>
+<li>
+<p>After opening your App ID service instance in your cloud account, note the App ID actions menu on the left-hand side of your screen:</p>
+<p><img alt="app-id-left-menu" src="../images/app_id_left_menu.png" /></p>
+</li>
+<li>
+<p>Click on the &ldquo;Applications&rdquo; menu item to see the Applications Screen:</p>
+<p><img alt="app-id-applications-main" src="../images/app_id_applications_main.png" /></p>
+</li>
+<li>
+<p>Click on the blue &ldquo;Add application&rdquo; button on the top-right of the screen:</p>
+<p><img alt="app-id-add-application" src="../images/app_id_add_application.png" /></p>
+</li>
+<li>
+<p>Enter the Name (<code>HRI</code>), keep the default <em>Type</em> of &ldquo;Regular web application&rdquo; and add both of the required scopes using the &ldquo;+&rdquo; button (<code>hri_data_integrator</code>, <code>hri_consumer</code>, <code>hri_internal</code>; see HRI Scopes above) and click the &ldquo;Save&rdquo; button:</p>
+<p><img alt="app-id-application-popup" src="../images/app_id_application_popup.png" /></p>
+</li>
+<li>
+<p>Now you should be able to view your newly created &ldquo;HRI&rdquo; Application, and it&rsquo;s details (note: that you will now see the three scopes in the &ldquo;scopes&rdquo; section):</p>
+<p><img alt="app-id-hri-application-example" src="../images/app_id_hri_app_example.png" /></p>
+</li>
+</ul>
+<hr />
+<ol start="2">
+<li>Create <strong>Tenant</strong> scopes:</li>
+</ol>
+<ul>
+<li>
+<p>In the App ID &ldquo;Applications&rdquo; screen, find the &ldquo;HRI&rdquo; Application created in step 1 above. Expand It&rsquo;s &ldquo;&hellip;&rdquo; menu on the far right and select &ldquo;Edit&rdquo;. </p>
+<p><img alt="app_id_hri_app_edit" src="../images/app_id_hri_app_edit.png" /></p>
+</li>
+<li>
+<p>Using the scopes &ldquo;+&rdquo; button, create a scope with the naming convention <code>tenant_&lt;tenantId&gt;</code> for every current tenant in your solution, then click the &ldquo;Save&rdquo; button.</p>
+<p><img alt="app_id_hri_tenant_scopes" src="../images/app_id_hri_tenant_scopes.png" /></p>
+<p>Please note that we added a scope named &ldquo;tenant_test&rdquo;, where the <code>test</code> portion of this scope string exactly matches the actual Tenant Name that was created when <a href="../admin/#managing-tenants">Adding/Creating the new tenant</a>:</p>
+<p><img alt="app_id_hri_app_example_tenants" src="../images/app_id_hri_app_example_tenants.png" />   </p>
+</li>
+</ul>
+<hr />
+<ol start="3">
+<li>Create new roles for each of the scopes you created in steps 1 &amp; 2. You will create roles for the HRI role scopes and for every existing Tenant in your solution.</li>
+</ol>
+<ul>
+<li>
+<p>Click on the &ldquo;Profiles and roles&rdquo; sub-menu (under &ldquo;Manage Authentication&rdquo;) and then on the &ldquo;Roles&rdquo; sub-menu under that:</p>
+<p><img alt="app-id-roles-sub-menu" src="../images/app_id_roles_menu.png" /></p>
+</li>
+<li>
+<p>Click on the blue &ldquo;Create Role&rdquo; button on the top-right of the screen. Enter a role name and description (optional). In the &ldquo;Scopes&rdquo; field, enter the HRI Application name followed by a &lsquo;/&rsquo; and then the scope name. Then click the &ldquo;+&rdquo; button. Each role will have a 1-to-1 relationship with one scope. Last, click the &ldquo;Save&rdquo; button. Below is example for the &ldquo;test&rdquo; Tenant role:</p>
+<p><img alt="app-id-roles-create-tenant" src="../images/app_id_roles_create_tenant.png" /></p>
+</li>
+<li>
+<p>A example &ldquo;test&rdquo; Tenant role:</p>
+<p><img alt="app-id-roles-tenant" src="../images/app_id_roles_tenant.png" /></p>
+</li>
+<li>
+<p>An example HRI Data Integrator role:</p>
+<p><img alt="app-id-roles-data-integrator" src="../images/app_id_roles_data_integrator.png" /></p>
+</li>
+<li>
+<p>An example HRI Consumer role:</p>
+<p><img alt="app-id-roles-data-consumer" src="../images/app_id_roles_data_consumer.png" /></p>
+</li>
+<li>
+<p>An example HRI Internal role:</p>
+<p><img alt="app-id-roles-data-consumer" src="../images/app_id_roles_internal.png" /></p>
+</li>
+</ul>
+<h3 id="adding-data-integrators-and-consumers">Adding Data Integrators and Consumers<a class="headerlink" href="#adding-data-integrators-and-consumers" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Create a new Application for every HRI client (Data Integrator or Data Consumer) that uses the Management API.</p>
+<p>For example, here is a screenshot that includes five (5) different user-instance Applications created for the HRI Integration Test (client):</p>
+<p><img alt="app-id-list-client-apps" src="../images/app_id_list_client_apps.png" /></p>
+<p>An example of what one of these new Applications would look like after created:</p>
+<p><img alt="app-id-new-app-cred-integrator" src="../images/app_id_new_app_cred_integrator.png" /></p>
+<p>Please note that the &ldquo;scopes&rdquo; property is empty and that this new &ldquo;credential&rdquo; Application has been created for the &ldquo;tenant_test&rdquo; and a &ldquo;data integrator&rdquo;. Hence, in Step 2 below, it will have the roles of &ldquo;Tenant Test&rdquo; and &ldquo;HRI Data Integrator&rdquo; assigned to it.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Assign roles to each of the Credential Applications you created in step 1 to grant access to the HRI and specific tenants. Currently, this can only be done via making HTTP calls directly to the App ID API, specifically the endpoint <code>/management/v4/{tenantId}/applications/{clientId}/roles</code> (see <a href="https://us-south.appid.cloud.ibm.com/swagger-ui/#/Management%20API%20-%20Applications">App ID API Specification</a> section &ldquo;Management API - Applications&rdquo;).</p>
+<p>For example, if you have just created a new Data Integrator credential Application, assign the HRI Data Integrator role, as well as a role for <strong>every tenant</strong> that data integrator produces data for, by taking the following actions:</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Using the command-line, Login to the IBM CLI and obtain an OAuth token:</p>
+<div class="codehilite"><pre><span></span><code>ibmcloud iam oauth-tokens
+</code></pre></div>
+
+<p>That will return a message like this:      </p>
+<div class="codehilite"><pre><span></span><code>IAM token:  Bearer eyJraWQi.......{Very long string}
+</code></pre></div>
+
+</li>
+<li>
+<p>Next, export that long string (starting after the &ldquo;Bearer &rdquo; section) to a bash/shell variable named TOKEN:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">TOKEN</span><span class="o">=</span><span class="n">eyJraWQi</span><span class="o">.......</span><span class="p">{</span><span class="n">Very</span> <span class="n">long</span> <span class="n">string</span><span class="p">}</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Compose the correct HTTP/REST endpoint URL for the Assignment API call:</p>
+<ul>
+<li>Find the correct App ID HTTP/REST endpoint URL root for managing the instance. In service credentials, it is the value of the <code>managementUrl</code> field (e.g <code>https://us-south.appid.cloud.ibm.com/management/v4/ec9bcf93-4863-46a7-bf66-19009b4e2ed8</code>):</li>
+</ul>
+<p><img alt="app_id_credential_mgmt_url" src="../images/app_id_credential_mgmt_url.png" /></p>
+<ul>
+<li>
+<p>To complete the URL you will need to add the following:</p>
+<p>/applications/[client_id_of_application_assigning_to]/roles</p>
+</li>
+</ul>
+<p>where &ldquo;client_id_of_application_assigning_to&rdquo; will be replaced with <code>clientId</code> value from the Application, such as the &ldquo;hri_integration_tenant_test_data_integrator&rdquo; Application. That clientId ends in <code>5f7ea</code>:</p>
+<p><img alt="app-id-new-app-cred-integrator" src="../images/app_id_new_app_cred_integrator.png" /></p>
+<p>The completed full example App ID HTTP PUT url would look like this:</p>
+<div class="codehilite"><pre><span></span><code>https://us-south.appid.cloud.ibm.com/management/v4/ec9bcf93-4863-46a7-bf66-19009b4e2ed8/applications/d55258ed-e765-4f83-939b-71dc7775f7ea/roles
+</code></pre></div>
+
+</li>
+<li>
+<p>Construct your JSON string of roles that you will be associating with this &ldquo;hri_integration_tenant_test_data_integrator&rdquo; Application.</p>
+<p>For our example, as the name of our new Credential Application suggests, we will be assigning the &ldquo;Tenant Test&rdquo; and &ldquo;HRI Data Integrator&rdquo; roles to the &ldquo;hri_integration_tenant_test_data_integrator&rdquo; Application.</p>
+<p>You will need to use the &ldquo;id&rdquo; field value of each Role you are associating with this particular application. In our case, that means we will need the role &ldquo;id&rdquo;s ending in <code>d9c16</code> and <code>26d12</code>:</p>
+<p><img alt="app-id-find-role-ids" src="../images/app_id_find_role_ids.png" /></p>
+</li>
+<li>
+<p>Your roles JSON string would then look like the following:</p>
+<div class="codehilite"><pre><span></span><code>{&quot;roles&quot;:{&quot;ids&quot;:[&quot;0d1e0b8f-0c8d-499e-87bb-82e6dded9c16&quot;,&quot;8dd46d09-eb58-4881-b6bf-fd32f4d26d12&quot;]}}
+</code></pre></div>
+
+<p>(Note that this is a list of n-number of roles, to which you may add more role IDs.)</p>
+</li>
+<li>
+<p>Finally, you can assemble your API HTTP request. Using a tool such as <a href="https://man7.org/linux/man-pages/man1/curl.1.html">cURL</a> at the command-line or <a href="https://www.postman.com/downloads/">Postman</a>, create your REST/HTTP request.</p>
+<p>Using cURL at the command-line (assumes you have curl installed; see <a href="https://curl.haxx.se/download.html">https://curl.haxx.se/download.html</a>):</p>
+<div class="codehilite"><pre><span></span><code>curl -X PUT https://us-south.appid.cloud.ibm.com/management/v4/ec9bcf93-4863-46a7-bf66-19009b4e2ed8/applications/d55258ed-e765-4f83-939b-71dc7775f7ea/roles \
+  -H &quot;Authorization: Bearer $TOKEN&quot; \
+  -H &#39;Content-Type: application/json&#39; \        
+  -d &#39;{&quot;roles&quot;:{&quot;ids&quot;:[&quot;0d1e0b8f-0c8d-499e-87bb-82e6dded9c16&quot;,&quot;8dd46d09-eb58-4881-b6bf-fd32f4d26d12&quot;]}}&#39;
+</code></pre></div>
+
+<p>Note that your roles JSON string should be surrounded by single-quotes (&lsquo;).</p>
+</li>
+</ul>
+<h3 id="hri-internal-application-setup">HRI Internal Application Setup<a class="headerlink" href="#hri-internal-application-setup" title="Permanent link">&para;</a></h3>
+<p>An HRI Internal Application is only needed if Validation is enabled. Each of these Applications represents one or more Flink jobs that validate batches of records. At a minimum, HRI Internal Applications need to be assigned a tenant role, the <code>hri_internal</code> role, and the <code>hri_consumer</code> role. The recommended approach is to assign all tenant roles to a single HRI Internal application. In this approach, the same <code>client-id</code> and <code>client-secret</code> will be used for every single Flink job (see <a href="../admin/#validation-processing">Validation Processing</a>).</p>
+<h3 id="authorization-workflow-example">Authorization Workflow Example<a class="headerlink" href="#authorization-workflow-example" title="Permanent link">&para;</a></h3>
+<p>To present an example, Data Integrators and Consumers using App ID would need to <strong>request</strong> an access token from the App ID service using the OAuth 2.0 &ldquo;client credentials&rdquo; grant flow for reference, see <a href="https://cloud.ibm.com/docs/appid?topic=appid-app">IBM App ID Documentation</a>. The request must include the desired scopes and the HRI Application ID as the audience. </p>
+<p>This is what an example cURL statement would look like to request the access token:</p>
+<div class="codehilite"><pre><span></span><code>curl -X POST https://us-south.appid.cloud.ibm.com/oauth/v4/ec9bcf93-4863-46a7-bf66-19009b4e2ed8/token <span class="se">\</span>
+    -H <span class="s1">&#39;Content-Type: application/x-www-form-urlencoded&#39;</span> <span class="se">\</span>
+    -H <span class="s1">&#39;Authorization: Basic &lt;client_id:client_password&gt;&#39;</span> <span class="se">\</span>
+    -d <span class="s1">&#39;grant_type=client_credentials&amp;scope=tenant_test hri_data_integrator&amp;audience=b8f85fbe-b00a-4296-b54b-e9ec09a5b2f3&#39;</span>
+
+<span class="c1">## Notes: For basic authentication you have to base64 encode the client_id and password like this</span>
+
+<span class="nb">echo</span> -n <span class="s1">&#39;&lt;client_id&gt;:&lt;client_password&gt;&#39;</span> <span class="p">|</span> base64      
+</code></pre></div>
+
+<p>And, here is an example access token for a Data Integrator Application with access to tenant &lsquo;test&rsquo;, produced by App ID:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://us-south.appid.cloud.ibm.com/oauth/v4/ec9bcf93-4863-46a7-bf66-19009b4e2ed8&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1598459309</span><span class="p">,</span>
+    <span class="nt">&quot;aud&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;b8f85fbe-b00a-4296-b54b-e9ec09a5b2f3&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;d55258ed-e765-4f83-939b-71dc7775f7ea&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;amr&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;appid_client_credentials&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1598455709</span><span class="p">,</span>
+    <span class="nt">&quot;tenant&quot;</span><span class="p">:</span> <span class="s2">&quot;ec9bcf93-4863-46a7-bf66-19009b4e2ed8&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;tenant_test hri_data_integrator&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Note the included scope(s):</p>
+<ul>
+<li><code>tenant_test</code>  </li>
+<li><code>hri_data_integrator</code></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../admin/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Administration" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Administration
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../performance/" class="md-footer__link md-footer__link--next" aria-label="Next: Performance" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Performance
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 IBM Watson Health<br>
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.f8263e09.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+        <script src="../js/links_in_new_tabs.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,754 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the Health Record Ingestion Service">
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>HRI Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="css/custom_style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#health-record-ingestion-service" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="HRI Documentation" class="md-header__button md-logo" aria-label="HRI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HRI Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Alvearie/HRI/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="HRI Documentation" class="md-nav__button md-logo" aria-label="HRI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    HRI Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Alvearie/HRI/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Introduction
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-technologies" class="md-nav__link">
+    Key Technologies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ibm-cloud-dependencies" class="md-nav__link">
+    IBM Cloud Dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-architecture" class="md-nav__link">
+    Core Architecture
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topics" class="md-nav__link">
+    Topics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batches" class="md-nav__link">
+    Batches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-format" class="md-nav__link">
+    Data Format
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-reading" class="md-nav__link">
+    Additional Reading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="processflow/" class="md-nav__link">
+        Processing Flows
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apispec/" class="md-nav__link">
+        API Specification
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="multitenancy/" class="md-nav__link">
+        Multi-Tenancy
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="validation/" class="md-nav__link">
+        Validation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deployment/" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="admin/" class="md-nav__link">
+        Administration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="auth/" class="md-nav__link">
+        Authorization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance/" class="md-nav__link">
+        Performance
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="monitorlog/" class="md-nav__link">
+        Monitoring & Logging
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="releases/" class="md-nav__link">
+        Releases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="glossary/" class="md-nav__link">
+        Glossary of Terms
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="roadmap/" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-technologies" class="md-nav__link">
+    Key Technologies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ibm-cloud-dependencies" class="md-nav__link">
+    IBM Cloud Dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-architecture" class="md-nav__link">
+    Core Architecture
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topics" class="md-nav__link">
+    Topics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batches" class="md-nav__link">
+    Batches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-format" class="md-nav__link">
+    Data Format
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-reading" class="md-nav__link">
+    Additional Reading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    Questions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Alvearie/HRI/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="health-record-ingestion-service">Health Record Ingestion service<a class="headerlink" href="#health-record-ingestion-service" title="Permanent link">&para;</a></h1>
+<p>The HRI is a deployment ready service for streaming Health-related data into the IBM Cloud. It provides a &ldquo;front door&rdquo; for &ldquo;Data Integrators&rdquo; to send data into the cloud, while supporting both batch-processing and data streaming workflows. It provides features to initiate and track the movement of a dataset for both <a href="glossary/#data-integrator">&ldquo;Data Integrators&rdquo;</a> and <a href="glossary/#data-consumer">&ldquo;Data Consumers&rdquo;</a>. </p>
+<p>The key features are:</p>
+<ul>
+<li>Streaming - all data is streamed</li>
+<li>Batch support - a collection of health data records can be streamed and processed together</li>
+<li>Validation - optional record level validation is performed on the data</li>
+<li>Multitenancy - supports segregation of data by tenant and Data Integrator</li>
+</ul>
+<h2 id="key-technologies">Key Technologies<a class="headerlink" href="#key-technologies" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.ibm.com/cloud/event-streams">Event Streams</a>, an IBM Cloud-based <a href="https://kafka.apache.org/">Apache Kafka</a> managed service, is the technology used for producing and consuming the data streams</li>
+<li><a href="https://github.com/elastic/elasticsearch">Elasticsearch</a> is the distributed NoSQL data store that is used to store information about batches</li>
+<li><a href="https://flink.apache.org/">Flink</a> is a stateful stream processing framework that is used to perform validation.</li>
+</ul>
+<h2 id="ibm-cloud-dependencies">IBM Cloud Dependencies<a class="headerlink" href="#ibm-cloud-dependencies" title="Permanent link">&para;</a></h2>
+<p>The HRI was developed on the IBM Cloud and currently does not support running on other public or private clouds. However, as a part of Alvearie, the goal is to support other public and private clouds, which the team continues to work towards. Please see the <a href="roadmap/">Roadmap</a> for additional details.   </p>
+<h2 id="core-architecture">Core Architecture<a class="headerlink" href="#core-architecture" title="Permanent link">&para;</a></h2>
+<p><img alt="core-architecture" src="images/architecture-core.png" /></p>
+<h3 id="topics">Topics<a class="headerlink" href="#topics" title="Permanent link">&para;</a></h3>
+<p>Health data, which may include <a href="glossary/#phi">PHI</a>, is written to and read from the Kafka topics. There <strong><em>must be</em></strong> <em>separate topics for each tenant and Data Integrator</em> in order to meet data separability requirements. A set of four topics is used per <a href="glossary/#stream">Stream</a> of data that flows through the HRI.</p>
+<p>Data Integrators write data to the <code>*.in</code> topic and Data Consumers read from the <code>*.out</code> topic. <a href="apispec/#notification-messages">Batch status notifications</a> are written to the <code>*.notification</code> topic and <a href="apispec/#invalid-record-notifications">invalid record notifications</a> are written to the <code>*.invalid</code> topic.</p>
+<h3 id="batches">Batches<a class="headerlink" href="#batches" title="Permanent link">&para;</a></h3>
+<p>Health Record Datasets often have requirements to be processed together &ldquo;as a set&rdquo; (partially or in their entirety) when moving the data into the cloud. Hence, HRI has been built with support to process a dataset as a <em>Batch</em>. See <a href="glossary/#batch">Batch</a> for a detailed definition.  </p>
+<p>How much data goes in a batch is really up to the solution. The HRI Management API provides support for starting, completing, terminating, and searching for batches. Any change to a batch results in a message being written to the associated notification topic in Kafka. </p>
+<h3 id="data-format">Data Format<a class="headerlink" href="#data-format" title="Permanent link">&para;</a></h3>
+<p>HRI does not impose any requirements on the format of the Health Data records written to Kafka. There is a separate effort to define a common FHIR model for PHI data. </p>
+<p>However, The HRI <strong>does require</strong> the <a href="glossary/#batch-id"><code>batchId</code></a> to be in the record header. Data Integrators may include any number of additional custom header values that they wish to pass onto data consumers. An example of a custom header value might be something like <code>originating_producer_id</code>, an originating data producer (or org) ID value that may need to be communicated to the data consumers. </p>
+<h2 id="additional-reading">Additional Reading<a class="headerlink" href="#additional-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="processflow/">Processing Flows</a></li>
+<li><a href="apispec/">API specification</a></li>
+<li><a href="multitenancy/">Multi-tenancy</a> </li>
+<li><a href="deployment/">Deployment</a></li>
+<li><a href="admin/">Administration</a></li>
+<li><a href="auth/">Authorization</a> </li>
+<li><a href="validation/">Validation</a></li>
+<li><a href="performance/">Performance</a></li>
+<li><a href="monitorlog/">Monitoring &amp; Logging</a></li>
+<li><a href="troubleshooting/">Troubleshooting</a></li>
+<li><a href="releases/">Releases</a></li>
+<li><a href="roadmap/">Roadmap</a></li>
+<li><a href="glossary/">Glossary</a></li>
+</ul>
+<h2 id="questions">Questions<a class="headerlink" href="#questions" title="Permanent link">&para;</a></h2>
+<p>Please contact these team members for further questions: </p>
+<ul>
+<li>David N. Perkins, Team Lead: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#97;&#118;&#105;&#100;&#46;&#110;&#46;&#112;&#101;&#114;&#107;&#105;&#110;&#115;&#64;&#105;&#98;&#109;&#46;&#99;&#111;&#109;">&#100;&#97;&#118;&#105;&#100;&#46;&#110;&#46;&#112;&#101;&#114;&#107;&#105;&#110;&#115;&#64;&#105;&#98;&#109;&#46;&#99;&#111;&#109;</a></li>
+<li>Aram S. Openden, Maintainer: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#114;&#97;&#109;&#46;&#111;&#112;&#101;&#110;&#100;&#101;&#110;&#49;&#64;&#105;&#98;&#109;&#46;&#99;&#111;&#109;">&#97;&#114;&#97;&#109;&#46;&#111;&#112;&#101;&#110;&#100;&#101;&#110;&#49;&#64;&#105;&#98;&#109;&#46;&#99;&#111;&#109;</a></li>
+</ul>
+<h2 id="contributors">Contributors<a class="headerlink" href="#contributors" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Alisa Kotliarova: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#108;&#105;&#115;&#97;&#64;&#105;&#98;&#109;&#46;&#99;&#111;&#109;">&#97;&#108;&#105;&#115;&#97;&#64;&#105;&#98;&#109;&#46;&#99;&#111;&#109;</a></li>
+<li>Daniel Baxter: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#106;&#98;&#97;&#120;&#116;&#101;&#114;&#64;&#117;&#115;&#46;&#105;&#98;&#109;&#46;&#99;&#111;&#109;">&#100;&#106;&#98;&#97;&#120;&#116;&#101;&#114;&#64;&#117;&#115;&#46;&#105;&#98;&#109;&#46;&#99;&#111;&#109;</a></li>
+<li>Fred Ricci: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#106;&#114;&#105;&#99;&#99;&#105;&#64;&#117;&#115;&#46;&#105;&#98;&#109;&#46;&#99;&#111;&#109;">&#102;&#106;&#114;&#105;&#99;&#99;&#105;&#64;&#117;&#115;&#46;&#105;&#98;&#109;&#46;&#99;&#111;&#109;</a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+      
+        
+        <a href="processflow/" class="md-footer__link md-footer__link--next" aria-label="Next: Processing Flows" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Processing Flows
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 IBM Watson Health<br>
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.f8263e09.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+        <script src="js/links_in_new_tabs.js"></script>
+      
+    
+  </body>
+</html>

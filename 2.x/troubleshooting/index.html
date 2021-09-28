@@ -1,0 +1,1043 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the Health Record Ingestion Service">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>Troubleshooting - HRI Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/custom_style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#troubleshooting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="HRI Documentation" class="md-header__button md-logo" aria-label="HRI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HRI Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Troubleshooting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/Alvearie/HRI/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="HRI Documentation" class="md-nav__button md-logo" aria-label="HRI Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    HRI Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Alvearie/HRI/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processflow/" class="md-nav__link">
+        Processing Flows
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apispec/" class="md-nav__link">
+        API Specification
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multitenancy/" class="md-nav__link">
+        Multi-Tenancy
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        Deployment
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../admin/" class="md-nav__link">
+        Administration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auth/" class="md-nav__link">
+        Authorization
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../performance/" class="md-nav__link">
+        Performance
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitorlog/" class="md-nav__link">
+        Monitoring & Logging
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Troubleshooting
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hri-management-api-issues" class="md-nav__link">
+    HRI Management API Issues
+  </a>
+  
+    <nav class="md-nav" aria-label="HRI Management API Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-is-possible-but-has-failed-or-not-yet-been-provided" class="md-nav__link">
+    Authentication is possible but has failed or not yet been provided
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-streams-issues" class="md-nav__link">
+    Event Streams Issues
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Streams Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssl-certificate-issues" class="md-nav__link">
+    SSL Certificate Issues
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elasticsearch" class="md-nav__link">
+    Elasticsearch
+  </a>
+  
+    <nav class="md-nav" aria-label="Elasticsearch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-curl-with-ibm-elasticsearch" class="md-nav__link">
+    Setup Curl with IBM Elasticsearch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrade-existing-elasticsearch-indices" class="md-nav__link">
+    Upgrade Existing Elasticsearch Indices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-elasticsearch-versions" class="md-nav__link">
+    Upgrading Elasticsearch Versions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migrating-to-another-elasticsearch-instance" class="md-nav__link">
+    Migrating to another Elasticsearch Instance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migrating-oidc-or-appid-instances" class="md-nav__link">
+    Migrating OIDC or AppID instances
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/" class="md-nav__link">
+        Releases
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        Glossary of Terms
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap/" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hri-management-api-issues" class="md-nav__link">
+    HRI Management API Issues
+  </a>
+  
+    <nav class="md-nav" aria-label="HRI Management API Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-is-possible-but-has-failed-or-not-yet-been-provided" class="md-nav__link">
+    Authentication is possible but has failed or not yet been provided
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-streams-issues" class="md-nav__link">
+    Event Streams Issues
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Streams Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssl-certificate-issues" class="md-nav__link">
+    SSL Certificate Issues
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elasticsearch" class="md-nav__link">
+    Elasticsearch
+  </a>
+  
+    <nav class="md-nav" aria-label="Elasticsearch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-curl-with-ibm-elasticsearch" class="md-nav__link">
+    Setup Curl with IBM Elasticsearch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrade-existing-elasticsearch-indices" class="md-nav__link">
+    Upgrade Existing Elasticsearch Indices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-elasticsearch-versions" class="md-nav__link">
+    Upgrading Elasticsearch Versions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migrating-to-another-elasticsearch-instance" class="md-nav__link">
+    Migrating to another Elasticsearch Instance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migrating-oidc-or-appid-instances" class="md-nav__link">
+    Migrating OIDC or AppID instances
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Alvearie/HRI/edit/master/docs/troubleshooting.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
+<h2 id="hri-management-api-issues">HRI Management API Issues<a class="headerlink" href="#hri-management-api-issues" title="Permanent link">&para;</a></h2>
+<h3 id="authentication-is-possible-but-has-failed-or-not-yet-been-provided">Authentication is possible but has failed or not yet been provided<a class="headerlink" href="#authentication-is-possible-but-has-failed-or-not-yet-been-provided" title="Permanent link">&para;</a></h3>
+<p><em><strong>NOTE:</strong> Only valid for versions prior to <code>v3.0.0</code></em></p>
+<p><strong>Issue:</strong> the Management API responds with this error: </p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;2cde977c23b3ab78befed56a6aac3820&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Authentication is possible but has failed or not yet been provided.&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Cause:</strong> the IBM Functions API Gateway is unable to authenticate with the backend IBM Function Actions. Actions have an API key and the API Gateway must be configured to use that API key. Typically, this is due to the API Gateway missing or having the wrong API key.</p>
+<p><strong>Fix:</strong> <br>
+<strong>Option 1</strong>. Try redeploying the Management API. This will generate a new API key and set it on the Actions and the API Gateway endpoints.</p>
+<p><strong>Option 2</strong>. Manually update the API endpoints.</p>
+<ol>
+<li>You will need the IBM Cloud CLI and Functions plugin. See these <a href="https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-cli_install">instructions</a> for installing them.</li>
+<li>
+<p>Set the CLI resource group to where the Management API is deployed. </p>
+<div class="codehilite"><pre><span></span><code>ibmcloud target -g &lt;resource_group&gt;
+</code></pre></div>
+
+</li>
+<li>
+<p>Set the CLI Functions namespace to where the Management API is deployed.</p>
+<div class="codehilite"><pre><span></span><code>ibmcloud fn namespace target &lt;namespace&gt;
+</code></pre></div>
+
+</li>
+<li>
+<p>Recreate all the API methods. Below is an example of the create batch endpoint. Reference <code>mgmt-api-manifest.yml</code> for a complete list of the endpoints and their associated actions.</p>
+<div class="codehilite"><pre><span></span><code>ibmcloud fn api create /hri /tenants/{tenantId}/batches post hri_mgmt_api/create_batch --response-type http
+</code></pre></div>
+
+</li>
+</ol>
+<p><strong>Option 3</strong>. Manually update the API gateway JSON configuration.</p>
+<ol>
+<li>Follow steps 1-3 above to set up the IBM CLI.</li>
+<li>
+<p>Download the API json configuration.</p>
+<div class="codehilite"><pre><span></span><code>ibmcloud fn api get hri-batches &gt; api.json
+</code></pre></div>
+
+</li>
+<li>
+<p>Get the API key set for the Actions. Run </p>
+<div class="codehilite"><pre><span></span><code>ibmcloud fn package get hri_mgmt_api
+</code></pre></div>
+
+<p>and the output should have a <code>"require-whisk-auth"</code> entry for each action. It should be the same value for every action. E.g:</p>
+<div class="codehilite"><pre><span></span><code>{
+    &quot;key&quot;: &quot;require-whisk-auth&quot;,
+    &quot;value&quot;: &quot;hIadvQ8w4nkJeWa3i7OPDb9WqTAUV9d6&quot;
+},
+</code></pre></div>
+
+</li>
+<li>
+<p>Edit the <code>api.json</code> file and add or replace the API key. There will be a <code>x-ibm-configuration</code> element, and a couple of layers inside, an array of <code>execute</code> elements, one for each endpoint. Each of these needs to have a <code>set-variable.actions</code> element that sets <code>message.headers.X-Require-Whisk-Auth</code> to the API key. Make sure there is one for every endpoint and that they match the API key from step 3. </p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+        <span class="nt">&quot;execute&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;invoke&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;target-url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://us-south.functions.cloud.ibm.com/api/v1/web/a98e053a-4a77-46b3-9791-53d4dfa370fb/hri_mgmt_api/get_batches.http$(request.path)&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;verb&quot;</span><span class="p">:</span> <span class="s2">&quot;keep&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;set-variable&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="nt">&quot;set&quot;</span><span class="p">:</span> <span class="s2">&quot;message.headers.X-Require-Whisk-Auth&quot;</span><span class="p">,</span>
+                            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;hIadvQ8w4nkJeWa3i7OPDb9WqTAUV9d6&quot;</span>
+                        <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;getTenantsTenantidBatches&quot;</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="event-streams-issues">Event Streams Issues<a class="headerlink" href="#event-streams-issues" title="Permanent link">&para;</a></h2>
+<h3 id="ssl-certificate-issues">SSL Certificate Issues<a class="headerlink" href="#ssl-certificate-issues" title="Permanent link">&para;</a></h3>
+<p><strong>Issue:</strong> when attempting to connect to <a href="../glossary/#event-streams">Event Streams</a> you receive SSL errors. In Java, you might get this exception <code>sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</code>. With curl, you get this error <code>SSL Certificate: Invalid certificate chain</code>.  </p>
+<p><strong>Cause:</strong> the Enterprise Event Streams brokers use a certificate signed by<code>issuer=C = US, O = Let’s Encrypt, CN = Let’s Encrypt Authority X3</code>  which is different from Standard versions. Whatever client is connecting to Event Streams is missing the Let&rsquo;s Encrypt public certificate. For Java, this certificate was added in version <code>8u101</code>.  </p>
+<p><strong>Fix:</strong> add the Let&rsquo;s Encrypt public certificate to your trusted root certificates. This varies depending on what technology you are using. Java comes with its own &lsquo;truststore&rsquo; with root certificates and all operating systems also store root certificates. The Let&rsquo;s Encrypt certificates can be downloaded <a href="https://letsencrypt.org/certificates/">here</a>. There are several guides online for adding certificates to the Java trust store. Here&rsquo;s <a href="https://docs.oracle.com/javase/tutorial/security/toolsign/rstep2.html">one</a> from Oracle. Here is a <a href="https://bounca.org/tutorials/install_root_certificate.html">guide</a> for several operating systems.</p>
+<h2 id="elasticsearch">Elasticsearch<a class="headerlink" href="#elasticsearch" title="Permanent link">&para;</a></h2>
+<h3 id="setup-curl-with-ibm-elasticsearch">Setup Curl with IBM Elasticsearch<a class="headerlink" href="#setup-curl-with-ibm-elasticsearch" title="Permanent link">&para;</a></h3>
+<p>Below are instructions for setting up Curl to interact with the Elasticsearch API directly. This can be useful when investigating issues or in some update scenarios like modifying existing index templates.</p>
+<ol>
+<li>Note: this requires the use of the <a href="https://github.com/curl/curl">command-line cURL</a> tool</li>
+<li>In your IBM Cloud <a href="../glossary/#elasticsearch">Elasticsearch (Document Store)</a> account, you will need to have either:<ul>
+<li>an existing Service Credential you can access  OR</li>
+<li>create a new Service Credential that you will use below for the <code>$USERNAME</code> and  <code>$PASSWORD</code> needed to run the Elasticsearch REST commands</li>
+</ul>
+</li>
+</ol>
+<p>To create a new Service Credential:</p>
+<p>Navigate to the Elasticsearch service instance in your <a href="https://cloud.ibm.com/login">IBM Cloud account</a>. Then click on the &ldquo;Service Credentials&rdquo; link on the left-hand side Elasticsearch service menu:</p>
+<p><img alt="doc-store-svc-creds" src="../images/doc_store_svc_creds.jpg" /></p>
+<p>On the Service Credentials page click the New Credential button:</p>
+<p><img alt="doc-store-new-cred" src="../images/doc_store_new_cred.jpg" /></p>
+<p>You will name your new credential and click the &ldquo;Add&rdquo; button. After that, your credential will be generated for you and you will be able to click on the &ldquo;View Credentials&rdquo; link. From this expanded service credentials window, you may retrieve your newly created Elasticsearch Username and Password that you will need for the Elasticsearch REST commands using cURL.  </p>
+<p>Next, you will need to download the certificate and export it, so cURL can authenticate with the IBM Cloud Elasticsearch instance. To do this:</p>
+<p>Navigate to the Management screen for your Elasticsearch instance, which will look something like this (ID field obscured in the ScreenCap for security):</p>
+<p><img alt="doc-store-manage" src="../images/doc_store_manage.jpg" /></p>
+<p>Scroll down your screen, and in the &ldquo;Connections&rdquo; panel, click on the &ldquo;CLI&rdquo; toggle. You will be using cURL to run commands from your local environment on the IBM Cloud Elasticsearch instance. See this page in the IBM Cloud Documentation for more info on <a href="https://cloud.ibm.com/docs/services/databases-for-elasticsearch?topic=databases-for-elasticsearch-connecting-curl">Connecting to Elasticsearch with cURL</a>.</p>
+<p><img alt="doc-store-conns-1" src="../images/doc_store_conns_1.png" /> </p>
+<p>In the &ldquo;Connections&rdquo; panel, there is a section for <em>TLS Certificate</em>. You will want to save the text from the &ldquo;Contents&rdquo; panel in that TLS Certificate section to a local file such as: </p>
+<div class="codehilite"><pre><span></span><code><span class="o">/</span><span class="n">Users</span><span class="o">/[</span><span class="n">yourLocalUserName</span><span class="o">]/</span><span class="n">certs</span><span class="o">/</span><span class="n">hri</span><span class="o">-</span><span class="n">documentstore</span><span class="p">.</span><span class="n">crt</span><span class="w"></span>
+</code></pre></div>
+
+<p>Use the contents of this file with cURL by exporting it to <code>CURL_CA_BUNDLE</code>. </p>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">CURL_CA_BUNDLE</span><span class="o">=/</span><span class="n">local</span><span class="o">-</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span><span class="o">/</span><span class="n">hri</span><span class="o">-</span><span class="n">documentstore</span><span class="o">.</span><span class="n">crt</span>
+</code></pre></div>
+
+<p>Find the base url in the &ldquo;Public CLI endpoint&rdquo; textbox. In this example it starts with <code>https://8165307</code>:</p>
+<p><img alt="doc-store-conns-2" src="../images/doc_store_conns_2.jpg" /></p>
+<p>You can now interact with the Elasticsearch REST API using cURL. For example, you can get the status of the cluster by performing a <code>GET</code> on the <code>_cluster/health?pretty</code> endpoint.</p>
+<div class="codehilite"><pre><span></span><code>curl -X GET -u &lt;username&gt;:&lt;password&gt; \
+  https://8165307e-6130-4581-942d-20fcfc4e795d.bkvfvtld0lmh0umkfi70.databases.appdomain.cloud:30600/_cluster/health?pretty
+</code></pre></div>
+
+<p>You can get the default index template by performing a <code>GET</code> to the <code>_index_template/batches</code> endpoint. </p>
+<div class="codehilite"><pre><span></span><code>curl -X GET -u &lt;username&gt;:&lt;password&gt; \
+  https://8165307e-6130-4581-942d-20fcfc4e795d.bkvfvtld0lmh0umkfi70.databases.appdomain.cloud:30600/_index_template/batches
+</code></pre></div>
+
+<p>You can also get the mapping for existing indexes (one per tenant) at <code>&lt;index&gt;/_mapping</code>.</p>
+<div class="codehilite"><pre><span></span><code>curl -X GET -u &lt;username&gt;:&lt;password&gt; \
+  https://8165307e-6130-4581-942d-20fcfc4e795d.bkvfvtld0lmh0umkfi70.databases.appdomain.cloud:30600/test-batches/_mapping
+</code></pre></div>
+
+<h3 id="upgrade-existing-elasticsearch-indices">Upgrade Existing Elasticsearch Indices<a class="headerlink" href="#upgrade-existing-elasticsearch-indices" title="Permanent link">&para;</a></h3>
+<p>Follow the steps to <a href="#setup-curl-with-ibm-elasticsearch">setup curl with IBM Elasticsearch</a>. You will also need a set of credentials, Elasticsearch host and port, and the Elasticsearch certificate. These will be referenced in the following steps using <code>$USERNAME</code>, <code>$PASSWORD</code>, <code>$ELASTIC_HOST</code>, and <code>$ELASTIC_PORT</code>.</p>
+<p>Download the <code>batches.json</code> index template from GitHub. The latest version can be found <a href="https://github.com/Alvearie/hri-mgmt-api/blob/main/document-store/index-templates/batches.json">here</a>. Make sure you switch the &lsquo;Branch&rsquo; to the release tag for the version you are upgrading to. For example, <a href="https://github.com/Alvearie/hri-mgmt-api/blob/v2.1-2.1.5/document-store/index-templates/batches.json">here</a> is the template for the <code>v2.1-2.1.5</code> release. </p>
+<p>The downloaded <code>batches.json</code> index template needs to be updated to only include the mapping properties. Remove lines 2-7 of the file which should include the <code>index_patterns</code>, <code>settings</code>, <code>mapping</code>, and <code>batch</code> fields. Next remove the 2nd and 3rd to last <code>}</code>&lsquo;s at the end of the file. The file should now just contain a the <code>properties</code> field with a list of field names. It should look like:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;properties&quot;</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;keyword&quot;</span>
+        <span class="p">},</span>
+        <span class="err">...</span>
+        <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>    
+<span class="p">}</span>
+</code></pre></div>
+
+<p>List all the Elasticsearch indices</p>
+<div class="codehilite"><pre><span></span><code>curl -u <span class="nv">$USERNAME</span>:<span class="nv">$PASSWORD</span> https://<span class="nv">$ELASTIC_HOST</span>:<span class="nv">$ELASTIC_PORT</span>/_cat/indices/*-batches
+</code></pre></div>
+
+<p>For each index listed above, update its mapping using the command below replacing <code>&lt;index&gt;</code> with the name of the index.</p>
+<div class="codehilite"><pre><span></span><code>curl -X POST -u <span class="nv">$USERNAME</span>:<span class="nv">$PASSWORD</span> <span class="se">\</span>
+https://<span class="nv">$ELASTIC_HOST</span>:<span class="nv">$ELASTIC_PORT</span>/&lt;index&gt;/_mapping <span class="se">\</span>
+-H <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+-d <span class="s1">&#39;@batches.json&#39;</span>
+</code></pre></div>
+
+<h3 id="upgrading-elasticsearch-versions">Upgrading Elasticsearch Versions<a class="headerlink" href="#upgrading-elasticsearch-versions" title="Permanent link">&para;</a></h3>
+<p>The process for upgrading Elasticsearch versions on the IBM Cloud is fairly straightforward. Below are the high level steps:</p>
+<ol>
+<li>Create a new, higher version of Elasticsearch from an existing backup. See the IBM Cloud <a href="https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-upgrading">documentation</a> for more details. This will copy all your existing tenants and batches.</li>
+<li>Enable firewall access to the new Elasticsearch instance from your Kubernetes cluster if using the public endpoint.</li>
+<li>Deploy the new HRI version that supports the upgraded Elasticsearch. See deployment <a href="../deployment/">documentation</a> for more details.</li>
+</ol>
+<p>NOTE: During the upgrade process, the HRI Management API should not be used. Any changes after the Elasticsearch backup is created in step 1, will be lost.</p>
+<p>This process may be prohibitively long for some solutions due to the amount of time required to change Kubernetes firewall rules. <strong>Pre <code>v3.x</code></strong>, Elasticsearch can be <em>configured manually</em> in order to temporarily skip the Kubernetes firewall changes <em>when validation is not enabled</em>. Replace step 2 above with the following:</p>
+<ol>
+<li>Download the Elasticsearch template and setup script from GitHub. Ensure you select the release tag that matches your HRI version before downloading. The links below default to <code>support-2.x</code> branch versions.<ul>
+<li><a href="https://github.com/Alvearie/hri-mgmt-api/blob/support-2.x/document-store/index-templates/batches.json">batches.json</a> index template</li>
+<li><a href="https://github.com/Alvearie/hri-mgmt-api/blob/support-2.x/docker/elastic.sh">elastic.sh</a> setup script</li>
+</ul>
+</li>
+<li>Open a IBM Cloud shell: <a href="https://cloud.ibm.com/shell">https://cloud.ibm.com/shell</a></li>
+<li>Upload the index template and setup script downloaded from step 1</li>
+<li>Change <code>elastic.sh</code> to be executable: <code>chmod +x elastic.sh</code></li>
+<li>Set <code>ELASTIC_INSTANCE</code> to the name of your new Elasticsearch instance: <code>export ELASTIC_INSTANCE=&lt;instance name&gt;</code></li>
+<li>Set <code>ELASTIC_SVC_ACCOUNT</code> to the name of your Elasticsearch service credential: <code>export ELASTIC_SVC_ACCOUNT=&lt;service credential name&gt;</code></li>
+<li>Run the <code>elastic.sh</code> script. Below is an example:<div class="codehilite"><pre><span></span><code>$ ./elastic.sh 
+Looking up Elasticsearch connection information and credentials
+
+ES id: <span class="s2">&quot;crn:v1:bluemix:public:databases-for-elasticsearch:us-south:a/49f48a067ac4433a911740653049e83d:81ce8a78-d119-4ef0-a65a-9b4ba741d52d::&quot;</span>
+
+ES baseUrl: https://81ce8a78-d119-4ef0-a65a-9b4ba741d52d.c00no9sd0hobi6kj68i0.databases.appdomain.cloud:31798
+
+Setting Elasticsearch auto index creation to <span class="nb">false</span>
+<span class="o">{</span><span class="s2">&quot;acknowledged&quot;</span>:true,<span class="s2">&quot;persistent&quot;</span>:<span class="o">{</span><span class="s2">&quot;action&quot;</span>:<span class="o">{</span><span class="s2">&quot;auto_create_index&quot;</span>:<span class="s2">&quot;false&quot;</span><span class="o">}}</span>,<span class="s2">&quot;transient&quot;</span>:<span class="o">{}}</span>
+Setting Elasticsearch Batches index template
+<span class="o">{</span><span class="s2">&quot;acknowledged&quot;</span>:true<span class="o">}</span>
+Elasticsearch configuration <span class="nb">complete</span>
+</code></pre></div>
+
+</li>
+</ol>
+<p>Then proceed with deploying the new HRI version. The deployment scripts will still try to configure Elasticsearch and report a failure for the smoke test, but the new Management API will still be deployed and function correctly. You can verify this by ensuring the <code>/hri/healthcheck</code> endpoint returns a <code>200</code>. You should still enable firewall access to the new Elasticsearch instance for future deploys.</p>
+<h3 id="migrating-to-another-elasticsearch-instance">Migrating to another Elasticsearch Instance<a class="headerlink" href="#migrating-to-another-elasticsearch-instance" title="Permanent link">&para;</a></h3>
+<p>The IBM Cloud does not provide an automated process for migrating an Elasticsearch instance to another account, but it can be done manually using Elasticsearch&rsquo;s snapshot and restore functionality with the S3 plugin. These enable creating a snapshot of an Elasticsearch instance, storing it in a COS bucket, and then restoring the snapshot to a different Elasticsearch instance. The migration should be performed after installing the HRI in the target account. </p>
+<p><strong>Note</strong>: this does require <em>downtime for the HRI application</em>. The steps are detailed below. </p>
+<ol>
+<li>
+<p>In the new account, create a COS bucket to store the Elasticsearch snapshots and a set of HMAC credentials with read and write access. Use the standard storage class, and if the destination Elasticsearch instance is in a different region than the source Elasticsearch instance, <em>ensure you select</em> &lsquo;<strong>Cross Region</strong>&lsquo; resiliency.</p>
+</li>
+<li>
+<p>Create the new Elasticsearch instance that you want to migrate to. This will be referred to as the &ldquo;destination instance&rdquo;. If desired, you can also upgrade to the next major Elasticsearch version. You <em>cannot upgrade</em> more than one major version.</p>
+</li>
+<li>
+<p>Setup curl to communicate with the source Elasticsearch instance. See the <a href="#setup-curl-with-ibm-elasticsearch">instructions</a> above for more details. The examples below will use <code>SRC</code> and <code>DEST</code> prefixes on environment variables to differentiate between the source and destination Elasticsearch connection parameters, e.g. <code>$SRC_USERNAME</code>, <code>$SRC_PASSWORD</code>, <code>$SRC_HOST</code>, and <code>$SRC_PORT</code>.</p>
+</li>
+<li>
+<p>Register the COS bucket from step 1 with the source Elasticsearch instance using the curl statement below. You will need to fill in the bucket name, endpoint, and HMAC credentials. We recommend using the private endpoint.</p>
+<div class="codehilite"><pre><span></span><code>curl -X POST -u $SRC_USERNAME:$SRC_PASSWORD https://$SRC_HOST:$SRC_PORT/_snapshot/migration \
+-H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;type&quot;: &quot;s3&quot;,
+  &quot;settings&quot;: {
+    &quot;endpoint&quot;: &quot;s3.private.us.cloud-object-storage.appdomain.cloud&quot;,
+    &quot;bucket&quot;: &quot;bucket_name&quot;,
+    &quot;access_key&quot;: &quot;xxxxx&quot;,
+    &quot;secret_key&quot;: &quot;xxxxx&quot;
+  }
+}&#39;
+</code></pre></div>
+
+</li>
+<li>
+<p>Repeat the prior two steps with the destination Elasticsearch instance. You may want to setup curl in a different terminal as you will need to run commands against both instances. When registering the COS bucket, add <code>"readonly": true</code>. Below is an example.</p>
+<div class="codehilite"><pre><span></span><code>curl -X POST -u $DEST_USERNAME:$DEST_PASSWORD https://$DEST_HOST:$DEST_PORT/_snapshot/migration \
+-H &#39;Content-Type: application/json&#39; -d&#39;
+{
+  &quot;type&quot;: &quot;s3&quot;,
+  &quot;settings&quot;: {
+    &quot;readonly&quot;: true,
+    &quot;endpoint&quot;: &quot;s3.private.us.cloud-object-storage.appdomain.cloud&quot;,
+    &quot;bucket&quot;: &quot;bucket_name&quot;,
+    &quot;access_key&quot;: &quot;xxxxx&quot;,
+    &quot;secret_key&quot;: &quot;xxxxx&quot;
+  }
+}&#39;
+</code></pre></div>
+
+</li>
+<li>
+<p>Get a list of the indices that need to be migrated. </p>
+<div class="codehilite"><pre><span></span><code>curl -X GET -u $SRC_USERNAME:$SRC_PASSWORD https://$SRC_HOST:$SRC_PORT/_cat/indices/*-batches
+</code></pre></div>
+
+</li>
+<li>
+<p>At this point you <strong>must stop</strong> operational use of the source HRI/Elasticsearch instance. Create a snapshot using the curl statement below. The example below uses <code>backup-2021-04-23</code>, but you can use any name for the snapshot. </p>
+<div class="codehilite"><pre><span></span><code>curl -X PUT -u $SRC_USERNAME:$SRC_PASSWORD &quot;https://$SRC_HOST:$SRC_PORT/_snapshot/migration/backup-2021-04-23?wait_for_completion=true&quot; \
+-H &#39;Content-Type: application/json&#39; -d &#39;{&quot;include_global_state&quot;: false}&#39;
+</code></pre></div>
+
+</li>
+<li>
+<p>Restore the snapshot on the destination Elasticsearch instance. You must list the indices that need to be restored (see step 6), because the snapshot includes an authorization index that cannot be overwritten. </p>
+<div class="codehilite"><pre><span></span><code>curl -X POST -u $DEST_USERNAME:$DEST_PASSWORD &quot;https://$DEST_HOST:$DEST_PORT/_snapshot/migration/backup-2021-04-23/_restore?wait_for_completion=true&quot; \
+-H &#39;Content-Type: application/json&#39; -d &#39;{&quot;include_global_state&quot;: false, &quot;indices&quot;: &quot;1234-batches,5678-batches&quot;}&#39;
+</code></pre></div>
+
+</li>
+<li>
+<p>You can list the indices to verify they were restored. They will be in a &lsquo;yellow&rsquo; state until all the shards have been replicated.</p>
+<div class="codehilite"><pre><span></span><code>curl -X GET -u $DEST_USERNAME:$DEST_PASSWORD https://$DEST_HOST:$DEST_PORT/_cat/indices/*-batches
+</code></pre></div>
+
+<p>In addition, each index has a <code>_recovery</code> endpoint that will list additional details about an ongoing restore. </p>
+<div class="codehilite"><pre><span></span><code>curl -X GET -u $DEST_USERNAME:$DEST_PASSWORD https://$DEST_HOST:$DEST_PORT/1234-batches/_recovery?pretty
+</code></pre></div>
+
+</li>
+</ol>
+<p>You can now begin using the HRI instance in the new account. If you also migrated to a new OIDC server (e.g. AppID), and want to preserve Data Integrators access to historical batches, see the next <a href="#migrating-oidc-or-appid-instances">section</a> for additional steps required.</p>
+<p>Additional resources:</p>
+<ul>
+<li>Here is an example <a href="../files/es-migration.sh">script</a> that can be a starting place for automating the Elasticsearch commands.</li>
+<li>Elasticsearch <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html">snapshot and restore</a> documentation</li>
+</ul>
+<h3 id="migrating-oidc-or-appid-instances">Migrating OIDC or AppID instances<a class="headerlink" href="#migrating-oidc-or-appid-instances" title="Permanent link">&para;</a></h3>
+<p>When migrating to a new OIDC server such as AppID steps are required to preserve Data Integrator access to historical batches.</p>
+<p>The HRI prevents Data Integrators from accessing batches that they did not create. This prevents them from accessing information about other Data Integrator&rsquo;s batches or making modifications to them. This is implemented by taking the <code>sub</code> (subject) claim from the JWT OAuth access token and storing it in the <code>integratorId</code> field of each batch. When Data Integrators access the Management API, the data is filtered to batches where their <code>sub</code> claim matches the <code>integratorId</code> field. If the OIDC instance is changed, the <code>sub</code> claim will also likely change, which means they will not be able to access any of the batches they created using the prior OIDC instance. In AppID, the <code>sub</code> claim is equal to their client ID. Data Consumers are not affected by this, because their access is not filtered.</p>
+<p>To fix this, the <code>integratorId</code> field will need to be updated on all batches from the source OIDC <code>sub</code> field to the new destination OIDC <code>sub</code> for all Data Integrators. This processes can be rather involved, so please reach out to the HRI development team if you need help creating the necessary Elasticsearch scripts for this update.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../monitorlog/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Monitoring &amp; Logging" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Monitoring & Logging
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../releases/" class="md-footer__link md-footer__link--next" aria-label="Next: Releases" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Releases
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 IBM Watson Health<br>
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.f8263e09.min.js", "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+        <script src="../js/links_in_new_tabs.js"></script>
+      
+    
+  </body>
+</html>
