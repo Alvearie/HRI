@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.8b42a75e.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -74,7 +74,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="HRI Documentation" class="md-header__button md-logo" aria-label="HRI Documentation" data-md-component="logo">
       
@@ -153,11 +155,14 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -635,7 +640,7 @@
                 <h1 id="hri-api-specification">HRI API Specification<a class="headerlink" href="#hri-api-specification" title="Permanent link">&para;</a></h1>
 <p>The HRI consists of two separate APIs: the Management API and Apache Kafka.</p>
 <h2 id="management-api-specification">Management API Specification<a class="headerlink" href="#management-api-specification" title="Permanent link">&para;</a></h2>
-<p>The Management API is defined using the OpenAPI 3.0 specification: <a href="https://github.com/Alvearie/hri-api-spec/blob/main/management-api/management.yml">management.yml</a>.
+<p>The Management API is defined using the OpenAPI 3.0 specification: <a href="https://github.com/Alvearie/hri-api-spec/blob/support-2.x/management-api/management.yml">management.yml</a>.
 You can open the file directly or use a program such as IntelliJ or <a href="https://swagger.io/tools/swagger-ui/download/">Swagger UI</a> to view it.</p>
 <h3 id="hri-tenants-elasticsearch-indices">HRI Tenants &amp; Elasticsearch Indices<a class="headerlink" href="#hri-tenants-elasticsearch-indices" title="Permanent link">&para;</a></h3>
 <p>HRI has been designed with a <a href="../multitenancy/">multi-tenant cloud architecture</a>. The API mainly contains methods for managing <a href="../glossary/#tenant">Tenants</a> like creating, getting, and deleting. Each of these calls takes in the tenantId. The ID is appended with the suffix <code>-batches</code> to create an index in Elasticsearch, where all the batch metadata is stored.</p>
@@ -872,9 +877,9 @@ Below is a table of the fields returned by this call:</p>
 </li>
 </ul>
 <h3 id="notification-messages">Notification Messages<a class="headerlink" href="#notification-messages" title="Permanent link">&para;</a></h3>
-<p>The notification messages are json-encoded batches. They match the schema returned by the Management API described above, which is also defined here: <a href="https://github.com/Alvearie/hri-api-spec/blob/main/notifications/batchNotification.json">batchNotification.json</a>.</p>
+<p>The notification messages are json-encoded batches. They match the schema returned by the Management API described above, which is also defined here: <a href="https://github.com/Alvearie/hri-api-spec/blob/support-2.x/notifications/batchNotification.json">batchNotification.json</a>.</p>
 <h3 id="invalid-record-notifications">Invalid Record Notifications<a class="headerlink" href="#invalid-record-notifications" title="Permanent link">&para;</a></h3>
-<p>When validation encounters an invalid record, an invalid record notification is written to the <code>*.invalid</code> topic. It contains a failure message, the batchId, and a pointer to the original record. Below is a table of the fields, and the json schema is defined here: <a href="https://github.com/Alvearie/hri-api-spec/blob/main/notifications/invalidRecord.json">invalidRecord.json</a>.</p>
+<p>When validation encounters an invalid record, an invalid record notification is written to the <code>*.invalid</code> topic. It contains a failure message, the batchId, and a pointer to the original record. Below is a table of the fields, and the json schema is defined here: <a href="https://github.com/Alvearie/hri-api-spec/blob/support-2.x/notifications/invalidRecord.json">invalidRecord.json</a>.</p>
 <table>
 <thead>
 <tr>
@@ -964,10 +969,12 @@ Below is a table of the fields returned by this call:</p>
             Copyright &copy; 2021 IBM Watson Health<br>
           </div>
         
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
         
       </div>
       
@@ -979,10 +986,10 @@ Below is a table of the fields returned by this call:</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.f8263e09.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      <script src="../assets/javascripts/bundle.4fc53ad4.min.js"></script>
       
         <script src="../js/links_in_new_tabs.js"></script>
       

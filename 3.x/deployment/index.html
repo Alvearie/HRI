@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.8">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.92558b1b.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.8b42a75e.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -74,7 +74,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="HRI Documentation" class="md-header__button md-logo" aria-label="HRI Documentation" data-md-component="logo">
       
@@ -153,11 +155,14 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -334,8 +339,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-the-hri-management-api-to-kubernetes" class="md-nav__link">
-    Deploy the HRI Management API to Kubernetes
+  <a href="#deploy-the-hri-management-api-to-ibm-functions" class="md-nav__link">
+    Deploy the HRI Management API to IBM Functions
   </a>
   
 </li>
@@ -529,8 +534,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-the-hri-management-api-to-kubernetes" class="md-nav__link">
-    Deploy the HRI Management API to Kubernetes
+  <a href="#deploy-the-hri-management-api-to-ibm-functions" class="md-nav__link">
+    Deploy the HRI Management API to IBM Functions
   </a>
   
 </li>
@@ -587,122 +592,66 @@
 <p><img alt="event-streams-create-cred" src="../images/event_streams_create_cred.png" /></p>
 <h2 id="create-authorization-service">Create Authorization Service<a class="headerlink" href="#create-authorization-service" title="Permanent link">&para;</a></h2>
 <p>The HRI Management API requires an authorization service. Integration testing has been performed with <a href="https://www.ibm.com/cloud/app-id">IBM Cloud App ID</a>, but any compliant service can be used. See <a href="../auth/">Authorization</a> for more details about the requirements and how to set up an App ID cloud service.</p>
-<h2 id="deploy-the-hri-management-api-to-kubernetes">Deploy the HRI Management API to Kubernetes<a class="headerlink" href="#deploy-the-hri-management-api-to-kubernetes" title="Permanent link">&para;</a></h2>
-<p>The Management API is packaged in a docker container for Kubernetes deployments and available on <a href="https://github.com/Alvearie/hri-mgmt-api/pkgs/container/hri-mgmt-api%2Fmgmt-api">GitHub</a>. The service is stateless, so you can scale up to as many pods as needed or even deploy multiple instances that use the same Elasticsearch, Kafka, and Authorization services.</p>
-<p>The Management API process only needs a valid configuration, which can be provided by any combination of command line arguments, environment variables, and a yaml file. Conflicts are resolved in the order: command line arguments (highest priority), environment variables, and yaml file(lowest priority). Below is a table of the configuration options.</p>
+<h2 id="deploy-the-hri-management-api-to-ibm-functions">Deploy the HRI Management API to IBM Functions<a class="headerlink" href="#deploy-the-hri-management-api-to-ibm-functions" title="Permanent link">&para;</a></h2>
+<p>The Management API is designed to run on <a href="https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-about">IBM Functions</a> and can be deployed using the IBM Cloud CLI Functions plug-in. The <a href="https://github.com/Alvearie/hri-mgmt-api/blob/support-2.x/deploy.sh">deploy.sh</a> script automates the process by creating an IBM Functions namespace, deploying the code and API, setting configuration values, and binding Elasticsearch and Event Streams service credentials. There are also scripts for configuring Elasticsearch, <a href="https://github.com/Alvearie/hri-mgmt-api/blob/support-2.x/docker/elastic.sh">elastic.sh</a>, and performing initial configurations of App ID, <a href="https://github.com/Alvearie/hri-mgmt-api/blob/support-2.x/docker/appid.sh">appid.sh</a>. These scripts are packaged into a docker container with the compiled code to support automated deployments and are available on <a href="https://github.com/Alvearie/hri-mgmt-api/pkgs/container/hri-mgmt-api%2Fmgmt-api-deploy">GitHub</a>. Below is a table of the environment variables used by the scripts.</p>
 <table>
 <thead>
 <tr>
-<th align="left">CLI Flag</th>
-<th align="left">Description</th>
-<th align="left">Required</th>
+<th>Name</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>-config-path</code></td>
-<td align="left">Path to a config file, default &ldquo;./config.yml&rdquo;</td>
-<td align="left"></td>
+<td>IBM_CLOUD_API_KEY</td>
+<td>The API key for IBM Cloud</td>
 </tr>
 <tr>
-<td align="left"><code>-elastic-crn</code></td>
-<td align="left">Elasticsearch service CRN</td>
-<td align="left">Yes</td>
+<td>IBM_CLOUD_REGION</td>
+<td>Target IBM Cloud Region, e.g. &lsquo;ibm:yp:us-south&rsquo;</td>
 </tr>
 <tr>
-<td align="left"><code>-elastic-url</code></td>
-<td align="left">The base url to the Elasticsearch instance</td>
-<td align="left">Yes</td>
+<td>RESOURCE_GROUP</td>
+<td>Target IBM Cloud Resource Group</td>
 </tr>
 <tr>
-<td align="left"><code>-elastic-cert</code></td>
-<td align="left">Elasticsearch TLS public certificate</td>
-<td align="left">Yes</td>
+<td>NAMESPACE</td>
+<td>Target IBM Functions namespace</td>
 </tr>
 <tr>
-<td align="left"><code>-elastic-username</code></td>
-<td align="left">Elasticsearch user name</td>
-<td align="left">Yes</td>
+<td>ELASTIC_INSTANCE</td>
+<td>Name of Elasticsearch instance</td>
 </tr>
 <tr>
-<td align="left"><code>-elastic-password</code></td>
-<td align="left">Elasticsearch password</td>
-<td align="left">Yes</td>
+<td>ELASTIC_SVC_ACCOUNT</td>
+<td>Name of Elasticsearch service ID</td>
 </tr>
 <tr>
-<td align="left"><code>-kafka-admin-url</code></td>
-<td align="left">Kafka administration url</td>
-<td align="left">Yes</td>
+<td>KAFKA_INSTANCE</td>
+<td>Name of Event Streams (Kafka) instance</td>
 </tr>
 <tr>
-<td align="left"><code>-kafka-brokers</code></td>
-<td align="left">A list of Kafka brokers, separated by &ldquo;,&rdquo;</td>
-<td align="left">Yes</td>
+<td>KAFKA_SVC_ACCOUNT</td>
+<td>Name of Event Streams (Kafka) service ID</td>
 </tr>
 <tr>
-<td align="left"><code>-kafka-properties</code></td>
-<td align="left">A list of Kafka properties, entries separated by &ldquo;,&rdquo;, key value pairs separated by &ldquo;:&rdquo;</td>
-<td align="left">Yes</td>
+<td>VALIDATION</td>
+<td>Whether to deploy the Management API with Validation, e.g. &lsquo;true&rsquo;, &lsquo;false&rsquo;</td>
 </tr>
 <tr>
-<td align="left"><code>-auth-disabled</code></td>
-<td align="left"><code>true</code> to disable OAuth Authorization, default: false</td>
-<td align="left"></td>
+<td>OIDC_ISSUER</td>
+<td>The base URL of the OIDC issuer to use for OAuth authentication (e.g. <code>https://us-south.appid.cloud.ibm.com/oauth/v4/&lt;tenantId&gt;</code>)</td>
 </tr>
 <tr>
-<td align="left"><code>-oidc-issuer</code></td>
-<td align="left">The base URL of the OIDC issuer to use for OAuth authentication (e.g. <a href="https://us-south.appid.cloud.ibm.com/oauth/v4/">https://us-south.appid.cloud.ibm.com/oauth/v4/</a><tenantId>).</td>
-<td align="left">If <code>-auth-disabled</code> is false.</td>
+<td>APPID_PREFIX</td>
+<td>(Optional) Prefix string to append to the AppId applications and roles created during deployment</td>
 </tr>
 <tr>
-<td align="left"><code>-jwt-audience-id</code></td>
-<td align="left">The ID of the HRI Management API within your authorization service.</td>
-<td align="left">If <code>-auth-disabled</code> is false.</td>
-</tr>
-<tr>
-<td align="left"><code>-tls-enabled</code></td>
-<td align="left">Toggle enabling an encrypted connection via TLS, default: false</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>-tls-cert-path</code></td>
-<td align="left">Path to the TLS certificate.</td>
-<td align="left">If <code>-tls-enabled</code> is true.</td>
-</tr>
-<tr>
-<td align="left"><code>-tls-key-path</code></td>
-<td align="left">Path to the TLS key.</td>
-<td align="left">If <code>-tls-enabled</code> is true.</td>
-</tr>
-<tr>
-<td align="left"><code>-new-relic-enabled</code></td>
-<td align="left">True to enable New Relic monitoring, default: false</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>-new-relic-app-name</code></td>
-<td align="left">Application name to aggregate data under in New Relic.</td>
-<td align="left">If <code>-new-relic-enabled</code> is true.</td>
-</tr>
-<tr>
-<td align="left"><code>-new-relic-license-key</code></td>
-<td align="left">New Relic license key.</td>
-<td align="left">If <code>-new-relic-enabled</code> is true.</td>
-</tr>
-<tr>
-<td align="left"><code>-validation</code></td>
-<td align="left">True to enable record validation, default false</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>-log-level</code></td>
-<td align="left">Minimum Log Level for logging output. Available levels are: Trace, Debug, Info, Warning, Error, Fatal and Panic. Default &ldquo;info&rdquo;)</td>
-<td align="left"></td>
+<td>SET_UP_APPID</td>
+<td>(Optional) defaults to true. Set to false if you do not want the App ID set-up enabled.</td>
 </tr>
 </tbody>
 </table>
-<p>The associated environment variable is named by removing the leading <code>-</code>, capitalizing all characters, and replacing remaining <code>-</code> with <code>_</code>. For example, the <code>-auth-disabled</code> flag has the <code>AUTH_DISABLED</code> environment variable.</p>
-<p>Yaml file entries are named by removing the leading <code>-</code>. For example, the <code>-auth-disabled</code> flag has the <code>auth-disabled</code> yaml entry.</p>
 <h2 id="validation-processing">Validation Processing<a class="headerlink" href="#validation-processing" title="Permanent link">&para;</a></h2>
 <p>Validation processing is an optional feature that validates the data as it flows through the HRI. See <a href="../validation/">Validation</a> for details on the validation performed and customization options. See <a href="../processflow/">Processing Flows</a> for details on how it fits into the overall architecture. </p>
 <p>Validation processing is built on <a href="https://flink.apache.org/">Apache Flink</a>, a highly available stateful stream processing framework, and requires a &lsquo;Session&rsquo; cluster when enabled. See their deployment <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.10/ops/deployment/kubernetes.html">documentation</a> for details on how to deploy a cluster. See the <a href="../admin/">Administration</a> page for details about how to deploy validation jobs.</p>
@@ -769,10 +718,12 @@
             Copyright &copy; 2021 IBM Watson Health<br>
           </div>
         
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
         
       </div>
       
@@ -784,10 +735,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.94ec81fe.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.f8263e09.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.48dfec6c.min.js"></script>
+      <script src="../assets/javascripts/bundle.4fc53ad4.min.js"></script>
       
         <script src="../js/links_in_new_tabs.js"></script>
       
