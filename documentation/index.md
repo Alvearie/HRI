@@ -6,16 +6,15 @@ The key features are:
 
 - Streaming - all data is streamed
 - Batch support - a collection of health data records can be streamed and processed together
-- Validation - optional record level validation is performed on the data
 - Multitenancy - supports segregation of data by tenant and Data Integrator
 
 ## Key Technologies
 - [Event Streams](https://www.ibm.com/cloud/event-streams), an IBM Cloud-based [Apache Kafka](https://kafka.apache.org/) managed service, is the technology used for producing and consuming the data streams
-- [Elasticsearch](https://github.com/elastic/elasticsearch) is the distributed NoSQL data store that is used to store information about batches
-- [Flink](https://flink.apache.org/) is a stateful stream processing framework that is used to perform validation.
+- Using [IBM Cloud Functions](https://cloud.ibm.com/functions/learn/concepts), HRI exposes a Serverless RESTful Management API that is used to control and configure the system
+- [Elasticsearch](https://github.com/elastic/elasticsearch) is the distributed NoSQL data store that is used to store information about batches 
 
 ## IBM Cloud Dependencies  
-The HRI was developed on the IBM Cloud and currently does not support running on other public or private clouds. However, as a part of Alvearie, the goal is to support other public and private cloud, which the team continues to work towards. Please see the [Roadmap](roadmap.md) for additional details.   
+The HRI was developed on the IBM Cloud and currently does not support running on other public or private clouds. However, as a part of Alvearie, the goal is to support other public and private clouds, which the team continues to work towards.
 
 ## Core Architecture
 ![core-architecture](images/architecture-core.png)
@@ -23,7 +22,7 @@ The HRI was developed on the IBM Cloud and currently does not support running on
 ### Topics
 Health data, which may include [PHI](glossary.md#phi), is written to and read from the Kafka topics. There **_must be_** _separate topics for each tenant and Data Integrator_ in order to meet data separability requirements. A set of four topics is used per [Stream](glossary.md#stream) of data that flows through the HRI.
 
-Data Integrators write data to the `*.in` topic and Data Consumers read from the `*.out` topic. [Batch status notifications](apispec.md#notification-messages) are written to the `*.notification` topic and [invalid record notifications](apispec.md#invalid-record-notifications) are written to the `*.invalid` topic.
+Data Integrators write data to and Data Consumers read data from the `*.in` topic. [Batch status notifications](apispec.md#notification-messages) are written to the `*.notification` topic.
 
 ### Batches
 Health Record Datasets often have requirements to be processed together "as a set" (partially or in their entirety) when moving the data into the cloud. Hence, HRI has been built with support to process a dataset as a _Batch_. See [Batch](glossary.md#batch) for a detailed definition.  
@@ -42,12 +41,9 @@ However, The HRI **does require** the [`batchId`](glossary.md#batch-id) to be in
 - [Deployment](deployment.md)
 - [Administration](admin.md)
 - [Authorization](auth.md) 
-- [Validation](validation.md)
-- [Performance](performance.md)
 - [Monitoring & Logging](monitorlog.md)
 - [Troubleshooting](troubleshooting.md)
 - [Releases](releases.md)
-- [Roadmap](roadmap.md)
 - [Glossary](glossary.md)
 
 ## Questions

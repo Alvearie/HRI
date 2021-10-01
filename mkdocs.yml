@@ -7,16 +7,13 @@ nav:
   - Processing Flows: processflow.md
   - API Specification: apispec.md
   - Multi-Tenancy: multitenancy.md
-  - Validation: validation.md
   - Deployment: deployment.md
   - Administration: admin.md
   - Authorization: auth.md
-  - Performance: performance.md
   - Monitoring & Logging: monitorlog.md
   - Troubleshooting: troubleshooting.md
   - Releases: releases.md
   - Glossary of Terms: glossary.md
-  - Roadmap: roadmap.md
 
 theme:
   name: material

@@ -3,7 +3,7 @@
 A listing of key terms and phrases to help one's understanding of the Health Record Ingestion service.
 
 #### Batch: 
-  * A __Batch__ in an HRI context represents a **_collection of Health Data records that must be processed together_** in order for that dataset to be ingested correctly into a cloud based solution. Only processing some of the data would result in a bad state for the data consumer. Likewise, if there is an error with processing part of the data, the entire **batch** may need to be rejected.
+  * A __Batch__ in an HRI context represents a **_collection of Health Data records that must be processed together_** in order for that dataset to be ingested correctly into a cloud-based solution. Only processing some of the data would result in a bad state for the data consumer. Likewise, if there is an error with processing part of the data, the entire **batch** may need to be rejected.
   
 #### Batch ID: 
   * A unique identifier in HRI, referring to one specific batch. 
@@ -14,9 +14,6 @@ A listing of key terms and phrases to help one's understanding of the Health Rec
 #### Data Integrator: 
   * An "upstream" service, process or application that "sends" data into the HRI for processing. 
 
-#### Echo:
-* Go web framework used by the Management API. See the [Echo website](https://echo.labstack.com) for more details.
-  
 #### Elasticsearch: 
   * A [distributed, open-source document store](https://www.elastic.co/what-is/elasticsearch) used to store various types of data. HRI uses Elasticsearch as its primary data store for metadata about batches. 
   

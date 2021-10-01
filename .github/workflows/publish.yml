@@ -11,7 +11,7 @@ jobs:
     name: Publish Docs
     runs-on: ubuntu-latest
     env:
-      VERSION: 3.x
+      VERSION: 1.x
 
     steps:
       - uses: actions/checkout@v2
