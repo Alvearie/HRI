@@ -7,6 +7,11 @@ Unless stated otherwise in the release notes of a specific version, upgrading th
 ## v1.x
 Version `1.x` uses IBM Functions to deploy the Management API and does not include validation processing. It is scheduled for deprecation in Q2 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.
 
+### v1.2.6
+
+#### Release notes
+First Alvearie release using new GitHub Actions workflow. There were no substantive changes to the API or deployed code.
+
 ### v1.2.5
 
 #### Release notes
