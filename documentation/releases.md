@@ -7,6 +7,11 @@ Unless stated otherwise in the release notes of a specific version, upgrading th
 ## v3.x
 Version `3.x` is the latest version focused on making the HRI a cloud-portable service. The Management API was moved from IBM Functions to a standard REST Web server and is packaged into a docker image for Kubernetes based deployments.
 
+### v3.0.1
+
+#### Release notes
+Patch update with multiple minor bug fixes to the HRI umbrella repo helm charts.
+
 ### v3.0.0
 
 #### Release notes
