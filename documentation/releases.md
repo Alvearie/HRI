@@ -7,6 +7,23 @@ Unless stated otherwise in the release notes of a specific version, upgrading th
 ## v3.x
 Version `3.x` is the latest version focused on making the HRI a cloud-portable service. The Management API was moved from IBM Functions to a standard REST Web server and is packaged into a docker image for Kubernetes based deployments.
 
+### v3.1.0
+
+#### Release notes
+An HRI minor release using public GitHuB Alvearie resources. There were also the following changes:
+
+**Management API**
+
+- Switched Kafka client library to `confluent-kafka-go` in order to support other Kafka authentication methods, this also caused the configuration options to use a list of Kafka connection properties.
+- Upgraded several dependencies
+
+**Validation(Flink)**
+
+- Upgraded to Flink `1.10.3`
+
+#### Upgrading
+This release does not contain breaking changes, but there are some changes to the Management API configuration properties. `-kafka-properties` takes a list of all connection properties. See https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md for the full list.
+
 ### v3.0.0
 
 #### Release notes
