@@ -14,7 +14,7 @@ An HRI minor release using public GitHuB Alvearie resources. There were also the
 
 **Management API**
 
-- Switched Kafka client library to `confluent-kafka-go` in order to support other Kafka authentication methods, this also caused the configuration options to use a list of Kafka connection properties.
+- Switched Kafka client library to `confluent-kafka-go` in order to support other Kafka authentication methods. This also caused the configuration options to switch to a list of Kafka connection properties.
 - Upgraded several dependencies
 
 **Validation(Flink)**
