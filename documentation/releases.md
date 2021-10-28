@@ -10,7 +10,7 @@ Version `3.x` is the latest version focused on making the HRI a cloud-portable s
 ### v3.1.0
 
 #### Release notes
-An HRI minor release using public GitHuB Alvearie resources. There were also the following changes:
+An HRI minor release using public GitHub Alvearie resources. There were also the following changes:
 
 **Management API**
 
