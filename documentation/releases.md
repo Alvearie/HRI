@@ -8,7 +8,6 @@ Unless stated otherwise in the release notes of a specific version, upgrading th
 Version `2.x` uses IBM Functions to deploy the Management API and includes validation processing. It is scheduled for deprecation in Q4 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.
 
 ### v2.1.6
-https://github.ibm.com/wffh-hri/deploy/releases/tag/v2.1.6
 
 #### Release notes
 First Alvearie release using new GitHub Actions workflow. Upgraded to Flink 1.10.3, other minor dependency updates.
