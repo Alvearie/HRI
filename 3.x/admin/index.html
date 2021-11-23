@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.5">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.cdeb8541.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -1110,15 +1110,15 @@
 </ul>
 <p>There are several ways to perform these tasks: the UI, the Rest API, and a CLI. We recommend solutions use the Rest API to automate tasks such as creating new Flink jobs for new streams. Below we will describe each of these options.</p>
 <h4 id="flink-rest-api">Flink Rest API<a class="headerlink" href="#flink-rest-api" title="Permanent link">&para;</a></h4>
-<p>Flink has a full featured REST <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#api">API</a>, which we encourage solutions to use for automation. Here are some useful endpoints:</p>
+<p>Flink has a full featured REST <a href="https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/">API</a>, which we encourage solutions to use for automation. Here are some useful endpoints:</p>
 <ul>
-<li><a href="https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#jars">GET <code>/jars</code></a> - returns a list of all the uploaded jars</li>
-<li><a href="https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#jars-upload">POST <code>/jars/upload</code></a> - uploads a new jar</li>
-<li><a href="https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#jars-jarid-run">POST <code>/jars/:jarid/run</code></a> - starts a new job</li>
-<li><a href="https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#jobs-jobid-stop">POST <code>/jobs/:jobid/stop</code></a> - stops a job and creates a savepoint. Set <code>drain</code> to <code>true</code> to allow the job to finish processing any in-flight data.</li>
+<li><a href="https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/#jars">GET <code>/jars</code></a> - returns a list of all the uploaded jars</li>
+<li><a href="https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/#jars-upload">POST <code>/jars/upload</code></a> - uploads a new jar</li>
+<li><a href="https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/#jars-jarid-run">POST <code>/jars/:jarid/run</code></a> - starts a new job</li>
+<li><a href="https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/#jobs-jobid-stop">POST <code>/jobs/:jobid/stop</code></a> - stops a job and creates a savepoint. Set <code>drain</code> to <code>true</code> to allow the job to finish processing any in-flight data.</li>
 </ul>
 <h4 id="do-not-cancel-flink-jobs">Do Not Cancel Flink Jobs<a class="headerlink" href="#do-not-cancel-flink-jobs" title="Permanent link">&para;</a></h4>
-<p>The Flink Rest API contains a <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#jobs-jobid-1">PATCH <code>/jobs/:jobid</code></a> endpoint that can cancel Flink jobs. This endpoint will not gracefully shutdown HRI validation jobs, and overusing it can cause an Out of Memory error. If a job needs to be stopped, call the [POST <code>/jobs/:jobid/stop</code>] endpoint.</p>
+<p>The Flink Rest API contains a <a href="https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/#jobs-jobid-1">PATCH <code>/jobs/:jobid</code></a> endpoint that can cancel Flink jobs. This endpoint will not gracefully shutdown HRI validation jobs, and overusing it can cause an Out of Memory error. If a job needs to be stopped, call the [POST <code>/jobs/:jobid/stop</code>] endpoint.</p>
 <h4 id="flink-ui">Flink UI<a class="headerlink" href="#flink-ui" title="Permanent link">&para;</a></h4>
 <p>Flink has a UI where jars can be viewed, uploaded, and run, but has limited support for rescaling jobs and creating savepoints.</p>
 <p>To view a list of jars, select &lsquo;Submit New Job&rsquo; from the right menu. Click &lsquo;+ Add New&rsquo; to upload a new jar.</p>
@@ -1126,7 +1126,7 @@
 <p>To start a new job, select a jar from the list and fill in the parameters. Put the job parameters in the &lsquo;Program Arguments&rsquo; field. You can also set the parallelism or enter a savepoint path to start from a prior job&rsquo;s savepoint.</p>
 <p><img alt="flink-jar-run" src="../images/flink-jar-run.png" /></p>
 <h4 id="flink-cli">Flink CLI<a class="headerlink" href="#flink-cli" title="Permanent link">&para;</a></h4>
-<p>Flink has a <a href="https://ci.apache.org/projects/flink/flink-docs-release-1.10/ops/cli.html">CLI</a> that be used to manually perform tasks or automate them. It supports all actions needed for managing jobs and savepoints but does not include all the monitoring endpoints of the REST API. It also has to be configured correctly to communicate with the Flink cluster.</p>
+<p>Flink has a <a href="https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/deployment/cli/">CLI</a> that can be used to manually perform tasks or automate them. It supports all actions needed for managing jobs and savepoints but does not include all the monitoring endpoints of the REST API. It also has to be configured correctly to communicate with the Flink cluster.</p>
 <h2 id="hri-management-user-authorization">HRI Management User Authorization<a class="headerlink" href="#hri-management-user-authorization" title="Permanent link">&para;</a></h2>
 <p>In your authorization service, create a new scope for this tenant and assign it to the Data Integrators and Consumers that need access. See <a href="../auth/">Authorization</a> for more details. </p>
 <p>If you are using the IBM App ID Service, please see <a href="../auth/#adding-data-integrators-and-consumers">Authorization - &ldquo;Adding Data Integrators and Consumers&rdquo;</a>.</p>
@@ -1206,10 +1206,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.8397ff9e.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.1e84347e.min.js"></script>
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
       
         <script src="../js/links_in_new_tabs.js"></script>
       
