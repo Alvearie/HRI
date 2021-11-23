@@ -7,6 +7,23 @@ Unless stated otherwise in the release notes of a specific version, upgrading th
 ## v3.x
 Version `3.x` is the latest version focused on making the HRI a cloud-portable service. The Management API was moved from IBM Functions to a standard REST Web server and is packaged into a docker image for Kubernetes based deployments.
 
+### v3.2.0
+
+#### Release notes
+An HRI minor release upgrading Apache Flink to 1.14. There were also the following changes:
+
+**Management API**
+
+- Upgraded to Golang 1.17
+- Upgraded the New Relic Echo agent library
+
+**Validation(Flink)**
+
+- Upgraded to Flink `1.14`
+
+#### Upgrading
+Since the Flink validation projects were upgraded to a new version of Flink, the Flink cluster running the job will also have to be upgraded. Savepoints from the prior version of the validation jobs can be used with the newer version. See the Flink [upgrade documentation](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/upgrading/#upgrading-the-flink-framework-version) for more information.
+
 ### v3.1.0
 
 #### Release notes

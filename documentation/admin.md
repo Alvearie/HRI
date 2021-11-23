@@ -216,15 +216,15 @@ There are several administrative tasks that may need to be performed including:
 There are several ways to perform these tasks: the UI, the Rest API, and a CLI. We recommend solutions use the Rest API to automate tasks such as creating new Flink jobs for new streams. Below we will describe each of these options.
 
 #### Flink Rest API
-Flink has a full featured REST [API](https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#api), which we encourage solutions to use for automation. Here are some useful endpoints:
+Flink has a full featured REST [API](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/), which we encourage solutions to use for automation. Here are some useful endpoints:
 
-- [GET `/jars`](https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#jars) - returns a list of all the uploaded jars
-- [POST `/jars/upload`](https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#jars-upload) - uploads a new jar
-- [POST `/jars/:jarid/run`](https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#jars-jarid-run) - starts a new job
-- [POST `/jobs/:jobid/stop`](https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#jobs-jobid-stop) - stops a job and creates a savepoint. Set `drain` to `true` to allow the job to finish processing any in-flight data.
+- [GET `/jars`](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/#jars) - returns a list of all the uploaded jars
+- [POST `/jars/upload`](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/#jars-upload) - uploads a new jar
+- [POST `/jars/:jarid/run`](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/#jars-jarid-run) - starts a new job
+- [POST `/jobs/:jobid/stop`](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/#jobs-jobid-stop) - stops a job and creates a savepoint. Set `drain` to `true` to allow the job to finish processing any in-flight data.
 
 #### Do Not Cancel Flink Jobs
-The Flink Rest API contains a [PATCH `/jobs/:jobid`](https://ci.apache.org/projects/flink/flink-docs-release-1.10/monitoring/rest_api.html#jobs-jobid-1) endpoint that can cancel Flink jobs. This endpoint will not gracefully shutdown HRI validation jobs, and overusing it can cause an Out of Memory error. If a job needs to be stopped, call the [POST `/jobs/:jobid/stop`] endpoint.
+The Flink Rest API contains a [PATCH `/jobs/:jobid`](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/ops/rest_api/#jobs-jobid-1) endpoint that can cancel Flink jobs. This endpoint will not gracefully shutdown HRI validation jobs, and overusing it can cause an Out of Memory error. If a job needs to be stopped, call the [POST `/jobs/:jobid/stop`] endpoint.
 
 #### Flink UI
 Flink has a UI where jars can be viewed, uploaded, and run, but has limited support for rescaling jobs and creating savepoints.
@@ -238,7 +238,7 @@ To start a new job, select a jar from the list and fill in the parameters. Put t
 ![flink-jar-run](images/flink-jar-run.png)
 
 #### Flink CLI
-Flink has a [CLI](https://ci.apache.org/projects/flink/flink-docs-release-1.10/ops/cli.html) that be used to manually perform tasks or automate them. It supports all actions needed for managing jobs and savepoints but does not include all the monitoring endpoints of the REST API. It also has to be configured correctly to communicate with the Flink cluster.
+Flink has a [CLI](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/deployment/cli/) that can be used to manually perform tasks or automate them. It supports all actions needed for managing jobs and savepoints but does not include all the monitoring endpoints of the REST API. It also has to be configured correctly to communicate with the Flink cluster.
 
 ## HRI Management User Authorization
 In your authorization service, create a new scope for this tenant and assign it to the Data Integrators and Consumers that need access. See [Authorization](auth.md) for more details. 

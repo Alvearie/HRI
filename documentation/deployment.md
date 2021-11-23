@@ -73,7 +73,7 @@ Yaml file entries are named by removing the leading `-`. For example, the `-auth
 ## Validation Processing
 Validation processing is an optional feature that validates the data as it flows through the HRI. See [Validation](validation.md) for details on the validation performed and customization options. See [Processing Flows](processflow.md) for details on how it fits into the overall architecture. 
 
-Validation processing is built on [Apache Flink](https://flink.apache.org/), a highly available stateful stream processing framework, and requires a 'Session' cluster when enabled. See their deployment [documentation](https://ci.apache.org/projects/flink/flink-docs-release-1.10/ops/deployment/kubernetes.html) for details on how to deploy a cluster. See the [Administration](admin.md) page for details about how to deploy validation jobs.
+Validation processing is built on [Apache Flink](https://flink.apache.org/), a highly available stateful stream processing framework, and requires a 'Session' cluster when enabled. See their deployment [documentation](https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/deployment/resource-providers/standalone/kubernetes/) for details on how to deploy a cluster. See the [Administration](admin.md) page for details about how to deploy validation jobs.
 
 ***
 
