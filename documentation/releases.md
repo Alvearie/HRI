@@ -10,7 +10,7 @@ Version `3.x` is the latest version focused on making the HRI a cloud-portable s
 ### v3.2.3
 
 #### Release notes
-An HRI patch release to upgrade Flink to version `1.14.3`.
+An HRI patch release to upgrade Flink to version `1.14.3` and Log4j libraries to `2.17.1`, fixing several vulnerabilities.
 
 ### v3.2.0
 
