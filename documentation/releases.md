@@ -7,6 +7,11 @@ Unless stated otherwise in the release notes of a specific version, upgrading th
 ## v3.x
 Version `3.x` is the latest version focused on making the HRI a cloud-portable service. The Management API was moved from IBM Functions to a standard REST Web server and is packaged into a docker image for Kubernetes based deployments.
 
+### v3.2.3
+
+#### Release notes
+An HRI patch release to upgrade Flink to version `1.14.3` and Log4j libraries to `2.17.1`, fixing several vulnerabilities.
+
 ### v3.2.0
 
 #### Release notes
