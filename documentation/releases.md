@@ -7,6 +7,16 @@ Unless stated otherwise in the release notes of a specific version, upgrading th
 ## v2.x
 Version `2.x` uses IBM Functions to deploy the Management API and includes validation processing. It is scheduled for deprecation in Q4 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.
 
+### v2.2.1
+
+#### Release notes
+An HRI patch release to update Golang packages to their latest versions to address vulnerabilities.
+
+### v2.2.0
+
+#### Release notes
+Validation processing was removed due to Log4j vulnerabilities in the older Flink version. To use validation update to the latest HRI version. This version is scheduled to be deprecated on March 01, 2022.
+
 ### v2.1.6
 
 #### Release notes
@@ -28,6 +38,16 @@ The `expectedRecordCount`, `actualRecordCount`, `invalidThreshold`, and `invalid
 
 ## v1.x
 Version `1.x` uses IBM Functions to deploy the Management API and does not include validation processing. It is scheduled for deprecation in Q2 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.
+
+### v1.2.7
+
+#### Release notes
+An HRI patch release to update Golang packages to their latest versions to address vulnerabilities.
+
+### v1.2.6
+
+#### Release notes
+First Alvearie release using new GitHub Actions workflow. There were no substantive changes to the API or deployed code.
 
 ### v1.2.5
 
