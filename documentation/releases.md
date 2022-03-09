@@ -70,7 +70,7 @@ This release does not contain breaking changes to the API specification, but the
 1. When all clients have migrated, delete the IBM Functions namespace that held the old Management API.
 
 ## v2.x
-Version `2.x` uses IBM Functions to deploy the Management API and includes validation processing. It is scheduled for deprecation in Q4 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.
+Version `2.x` uses IBM Functions to deploy the Management API and includes validation processing. It is deprecated as of March 2022. Please upgrade to the latest version at your earliest convenience.
 
 ### v2.2.1
 
@@ -102,7 +102,7 @@ This release **does not contain** breaking changes. Data Integrators and Consume
 The `expectedRecordCount`, `actualRecordCount`, `invalidThreshold`, and `invalidRecordCount` fields have also been added to the [Batch API](apispec.md#batches) and [Notification Message](apispec.md#notification-messages) model, so Data Integrators and Consumers may need to update their integration tools to prevent parsing errors. Additional Batch Notification messages and `status` values have also been added. For more information, refer to the [Batch Status Transitions](processflow.md#batch-status-transitions) documentation.
 
 ## v1.x
-Version `1.x` uses IBM Functions to deploy the Management API and does not include validation processing. It is scheduled for deprecation in Q2 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.
+Version `1.x` uses IBM Functions to deploy the Management API and does not include validation processing.  It is deprecated as of March 2022.  Please upgrade to the latest version at your earliest convenience.
 
 ### v1.2.7
 
