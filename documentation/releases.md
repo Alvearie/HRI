@@ -7,6 +7,11 @@ Unless stated otherwise in the release notes of a specific version, upgrading th
 ## v3.x
 Version `3.x` is the latest version focused on making the HRI a cloud-portable service. The Management API was moved from IBM Functions to a standard REST Web server and is packaged into a docker image for Kubernetes based deployments.
 
+### v3.2.4
+
+#### Release notes
+An HRI patch release to update Golang packages to their latest versions to address vulnerabilities.
+
 ### v3.2.3
 
 #### Release notes
@@ -67,6 +72,16 @@ This release does not contain breaking changes to the API specification, but the
 ## v2.x
 Version `2.x` uses IBM Functions to deploy the Management API and includes validation processing. It is scheduled for deprecation in Q4 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.
 
+### v2.2.1
+
+#### Release notes
+An HRI patch release to update Golang packages to their latest versions to address vulnerabilities.
+
+### v2.2.0
+
+#### Release notes
+Validation processing was removed due to Log4j vulnerabilities in the older Flink version. To use validation update to the latest HRI version. This version is scheduled to be deprecated on March 01, 2022.
+
 ### v2.1.6
 
 #### Release notes
@@ -88,6 +103,11 @@ The `expectedRecordCount`, `actualRecordCount`, `invalidThreshold`, and `invalid
 
 ## v1.x
 Version `1.x` uses IBM Functions to deploy the Management API and does not include validation processing. It is scheduled for deprecation in Q2 of 2022. Until then security updates and bug fixes will still be made, but no new features will be added. Please upgrade to the latest version at your earliest convenience.
+
+### v1.2.7
+
+#### Release notes
+An HRI patch release to update Golang packages to their latest versions to address vulnerabilities.
 
 ### v1.2.6
 
